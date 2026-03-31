@@ -1,4 +1,4 @@
-import { Users, GraduationCap, Globe } from "lucide-react";
+import { Users, GraduationCap, Globe, ArrowRight } from "lucide-react";
 
 const PILLARS = [
   {
@@ -20,7 +20,7 @@ const PILLARS = [
 
 export default function AboutSection() {
   return (
-    <section id="sobre-nosotros" className="bg-rice/30 py-24 md:py-32">
+    <section id="sobre-nosotros" className="bg-rice/30 py-24 md:py-32 border-t border-border-subtle/50">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         
        {/* LAYOUT EDITORIAL INVERTIDO (ZIGZAG) */}
@@ -33,22 +33,22 @@ export default function AboutSection() {
           <div className="order-last lg:order-first relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-white shadow-xl lg:aspect-square group">
             <div className="absolute inset-0 bg-imperial/5 transition-colors group-hover:bg-transparent z-10" />
             
-            {/* Si tienes una foto real, reemplaza este div por la etiqueta <img> */}
-            <div className="flex h-full w-full flex-col items-center justify-center border border-imperial/10 bg-rice/50 p-8 text-center transition-transform duration-500 group-hover:scale-105">
-              <span className="font-serif text-5xl text-imperial/20 mb-4">春风</span>
-              <p className="text-ink-light/60 font-medium">
-                [ Sugerencia de Imagen: Estudiantes interactuando en vivo, o detalles de caligrafía tradicional ]
-              </p>
-            </div>
+            {/* IMAGEN REAL IMPLEMENTADA */}
+            <img 
+              src="/caligrafia.jpg" // Asegúrate de que este archivo esté dentro de tu carpeta /public
+              alt="Detalle fotográfico de caligrafía china tradicional realizada a mano con pincel y tinta negra sobre papel de arroz texturizado, representando la esencia de ChunFengBeiBei"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
 
           {/* 2. EL TEXTO AHORA VA SEGUNDO (Derecha en Desktop) */}
           <div className="order-first lg:order-last max-w-xl">
             <p className="text-sm font-bold tracking-[0.15em] text-imperial uppercase">
-              ¿Qué es ChunFeng BeiBei?
+              Nuestra Esencia
             </p>
             <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-ink sm:text-4xl lg:text-5xl">
-              El espacio donde tu idioma <span className="text-imperial italic">cobra vida</span>
+              El espacio donde tu idioma <span className="text-imperial">cobra vida</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink-light">
               Somos un centro de estudios culturales dedicado a la enseñanza del chino mandarín con un enfoque radicalmente diferente: <strong className="text-ink font-semibold">práctico, humano y progresivo.</strong>
@@ -65,13 +65,17 @@ export default function AboutSection() {
           {PILLARS.map((pillar) => (
             <article
               key={pillar.title}
-              className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+              // 1. Contenedor principal: Hover para Desktop, Active (hundimiento sutil) para Móvil
+              className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-md active:scale-[0.98] active:bg-gray-50/50"
             >
-              <div className="absolute top-0 left-0 h-1 w-0 bg-imperial transition-all duration-300 group-hover:w-full" />
+              {/* 2. Barra superior: Se expande en Desktop (hover) y en Móvil (al tocar) */}
+              <div className="absolute top-0 left-0 h-1 w-0 bg-imperial transition-all duration-300 md:group-hover:w-full group-active:w-full" />
               
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-imperial/5 text-imperial transition-transform duration-300 group-hover:scale-110 group-hover:bg-imperial/10">
+              {/* 3. Icono: Escala hacia arriba en Desktop, se encoge un poco al tacto en Móvil */}
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-imperial/5 text-imperial transition-all duration-300 md:group-hover:scale-110 md:group-hover:bg-imperial/10 group-active:scale-95 group-active:bg-imperial/10">
                 <pillar.icon className="h-6 w-6" strokeWidth={1.5} aria-hidden="true" />
               </div>
+              
               <h3 className="mb-3 font-serif text-xl font-bold text-ink">
                 {pillar.title}
               </h3>
@@ -80,6 +84,20 @@ export default function AboutSection() {
               </p>
             </article>
           ))}
+        </div>
+
+        {/* EL NUEVO CALL TO ACTION ELEGANTE (Para la sección "Nuestra Esencia") */}
+        <div className="mt-16 flex justify-center">
+          <a
+            href="#horarios" // Cambia esto al ID de tu sección de cursos
+            // Le damos el efecto de hundimiento en móvil (active:scale-95) y cambio de color
+            className="group inline-flex items-center gap-2 font-medium text-imperial transition-all duration-300 md:hover:text-ink active:scale-95 active:text-6nk"
+          >
+            Conoce nuestros programas de estudio
+            
+            {/* Animación: Se desliza a la derecha al pasar el mouse (PC) o al presionar (Móvil) */}
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 md:group-hover:translate-x-1.5 group-active:translate-x-1.5" />
+          </a>
         </div>
 
       </div>
