@@ -105,7 +105,7 @@ const nextStartDate = availableCourses.length > 0
   : "Próximamente";
 
 return (
-  <section id="programas" className="bg-rice py-24 md:py-32">
+  <section id="horarios" className="bg-rice py-24 md:py-32">
     <div className="mx-auto max-w-6xl px-5 lg:px-8">
       
       {/* Cabecera */}
