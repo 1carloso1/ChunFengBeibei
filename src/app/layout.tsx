@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${crimsonText.variable} ${sourceSans.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/logo.png" type="image/png" />
       </head>
       <body className="min-h-screen bg-rice text-ink antialiased">
         <a
