@@ -69,11 +69,11 @@ export default function MethodologySection() {
         </div>
 
         {/* Caja de Destacado: ¿Qué se logra realmente? */}
-        <div className="mt-24 overflow-hidden rounded-2xl bg-rice shadow-md border border-jade/10 lg:flex lg:items-center">
+        <div className="mt-24 overflow-hidden rounded-2xl bg-rice shadow-md border border-jade/10 transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-lg active:scale-[0.98] lg:flex lg:items-center">
           
           {/* Eliminamos bg-jade/5 de aquí */}
-          <div className="p-10 lg:w-1/3 lg:p-12 border-b border-jade/10 lg:border-b-0 lg:border-r flex flex-col justify-center">
-            <h3 className="font-serif text-2xl font-bold text-jade mb-4">En cada módulo lograrás:</h3>
+          <div className="flex flex-col justify-center border-b border-jade/10 p-10 lg:w-1/3 lg:border-b-0 lg:border-r lg:p-12">
+            <h3 className="mb-4 font-serif text-2xl font-bold text-jade">En cada módulo lograrás:</h3>
             <p className="text-ink-light">El avance es progresivo, medible y siempre acompañado por tu profesora nativa.</p>
           </div>
           <div className="p-10 lg:w-2/3 lg:p-12">
@@ -87,8 +87,8 @@ export default function MethodologySection() {
                 "Prepararte para el sistema HSK"
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <ArrowRightCircle className="h-5 w-5 text-jade shrink-0 mt-0.5" />
-                  <span className="text-ink font-medium">{item}</span>
+                  <ArrowRightCircle className="mt-0.5 h-5 w-5 shrink-0 text-jade" />
+                  <span className="font-medium text-ink">{item}</span>
                 </li>
               ))}
             </ul>
