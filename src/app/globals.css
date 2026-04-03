@@ -80,3 +80,28 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@theme {
+  /* 1. Registramos las clases de animación para Tailwind */
+  --animate-accordion-down: accordion-down 0.3s ease-out;
+  --animate-accordion-up: accordion-up 0.3s ease-out;
+}
+
+/* 2. Definimos qué hacen físicamente esas animaciones */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

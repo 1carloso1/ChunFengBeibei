@@ -23,17 +23,19 @@ const TESTIMONIALS = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonios" className="bg-white py-20 md:py-28">
+    // Cambiamos bg-rice por bg-white
+    <section id="testimonios" className="bg-white py-24 md:py-32 border-t border-border-subtle/50">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold tracking-wide text-jade uppercase">
+        
+        {/* Cabecera de la sección */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-bold tracking-[0.15em] text-jade uppercase">
             Testimonios
           </p>
-          <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-ink sm:text-4xl lg:text-5xl">
             Lo que dicen nuestros alumnos
           </h2>
         </div>
-
         <div className="mt-12 grid gap-8 lg:grid-cols-3">
           {TESTIMONIALS.map((testimonial) => (
             <figure

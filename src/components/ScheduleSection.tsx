@@ -442,13 +442,13 @@ return (
       {/* --- BANNER VIP: Siempre visible como Upsell Premium --- */}
 {filteredCourses.length > 0 && (
   
-  <div className="mt-16 w-full overflow-hidden rounded-3xl bg-ink p-8 shadow-2xl transition-all duration-300 md:p-10 md:hover:-translate-y-1 md:hover:shadow-jade/10 lg:flex lg:items-center lg:justify-between lg:gap-8 active:scale-[0.99]">
+  <div className="mt-16 w-full overflow-hidden rounded-3xl bg-emerald-950 p-8 shadow-2xl transition-all duration-300 md:p-10 md:hover:-translate-y-1 md:hover:shadow-jade/10 lg:flex lg:items-center lg:justify-between lg:gap-8 active:scale-[0.99]">
     
     {/* Columna Izquierda: Copywriting persuasivo */}
     <div className="lg:w-2/3">
       {/* Etiqueta Premium usando el Amber de tu sistema */}
-      <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-500">
-        <Star className="h-4 w-4 fill-amber-500" /> Servicio Premium
+      <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-400">
+        <Star className="h-4 w-4 fill-emerald-400" /> Servicio Premium
       </span>
       <h3 className="mt-3 font-serif text-2xl font-bold text-white sm:text-3xl">
         ¿Prefieres avanzar a tu propio ritmo?
@@ -469,8 +469,9 @@ return (
       {/* Botón en Amber para mantener la consistencia */}
       <button 
         onClick={() => window.open("https://wa.me/tu-numero?text=Hola!%20Me%20gustaría%20agendar%20mi%20programa%20VIP%201%20a%201%20y%20personalizar%20mi%20horario.", '_blank')}
-        className="group/vip flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-4 text-sm font-bold text-ink transition-all duration-300 md:hover:bg-white md:hover:text-ink active:bg-rice active:text-ink active:scale-95 active:duration-0 sm:w-auto"
+        className="group/vip flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-sm font-bold text-emerald-950 transition-all duration-300 md:hover:bg-emerald-50 md:hover:shadow-lg md:hover:shadow-white/10 active:scale-95 active:bg-emerald-100 active:duration-0 sm:w-auto"
       >
+        
         Agendar mi programa VIP
         <ArrowRight className="h-4 w-4 transition-transform group-active/vip:translate-x-1 md:group-hover/vip:translate-x-1" />
       </button>
