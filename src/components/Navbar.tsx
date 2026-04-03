@@ -89,7 +89,15 @@ export default function Navbar() {
 
     {/* El detalle decorativo */}
     <div className="mt-auto pb-10 text-center opacity-20">
-      <span className="font-serif text-4xl text-imperial">春风贝贝</span>
+      <span 
+        className="text-4xl text-imperial"
+        style={{ 
+          // Esto le dice al navegador: "Usa la fuente china elegante del sistema inmediatamente"
+          fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif' 
+        }}
+      >
+        春风贝贝
+      </span>
     </div>
   </div>
 )}
