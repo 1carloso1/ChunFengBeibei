@@ -89,7 +89,7 @@ export default function AboutSection() {
         {/* EL NUEVO CALL TO ACTION ELEGANTE (Para la sección "Nuestra Esencia") */}
         <div className="mt-16 flex justify-center">
           <a
-            href="#horarios" // Cambia esto al ID de tu sección de cursos
+            href="#programas" // Cambia esto al ID de tu sección de cursos
             // Le damos el efecto de hundimiento en móvil (active:scale-95) y cambio de color
             className="group inline-flex items-center gap-2 font-medium text-imperial transition-all duration-300 md:hover:text-ink active:scale-95 active:text-6nk"
           >

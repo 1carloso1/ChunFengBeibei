@@ -2,11 +2,11 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import MethodologySection from "@/components/MethodologySection";
-import ScheduleSection from "@/components/ScheduleSection";
 import FAQSection from "@/components/FAQSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ProgramsAndScheduleWrapper from "@/components/ProgramsAndScheduleWrapper";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <MethodologySection />
-        <ScheduleSection />
+        <ProgramsAndScheduleWrapper />
         <FAQSection />
         <TestimonialsSection />
         <ContactSection />

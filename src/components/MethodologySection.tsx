@@ -105,7 +105,7 @@ export default function MethodologySection() {
             href="#horarios"
             className="group inline-flex items-center gap-2 rounded-full border border-jade/30 bg-jade/20 px-8 py-3 font-medium text-ink transition-all duration-300 md:hover:bg-jade md:hover:text-white md:hover:shadow-lg md:hover:shadow-jade/20 active:scale-95 active:bg-jade active:text-white"
           >
-            Ver Programas
+            Ver Horarios
             
             {/* La flecha sigue rebotando para llamar la atención */}
             <ArrowDown className="h-4 w-4 animate-bounce" />
