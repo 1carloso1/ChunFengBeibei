@@ -5,11 +5,13 @@ import { Menu, X } from "lucide-react";
 
 // 1. Limpieza de enlaces (Sugerencia: quitar Inicio y Preguntas si se puede)
 const NAV_LINKS = [
-  { href: "#sobre-nosotros", label: "Nosotros" },
-  { href: "#metodologia", label: "Metodología" },
-  { href: "#horarios", label: "Horarios" },
-  { href: "#testimonios", label: "Testimonios" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "#sobre-nosotros", label: "Nosotros" },      // ¿Quiénes son? (Autoridad)
+  { href: "#metodologia", label: "Metodología" },       // ¿Por qué funciona? (Diferenciador)
+  { href: "#programas", label: "Programas" },           // ¿Qué venden? (Oferta)
+  { href: "#horarios", label: "Horarios" },             // ¿Cuándo puedo estudiar? (Logística)
+  // Testimonios es opcional. Si ves que el Navbar se ve muy lleno, puedes quitarlo. 
+  // Si tienes espacio, déjalo, porque da mucha prueba social.
+  { href: "#testimonios", label: "Testimonios" },       
 ];
 
 export default function Navbar() {

@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
             <article
               key={index}
               // Clases idénticas a Programas (anchos, redondeo 3xl, sombras, hover y active)
-              className="group flex w-[80vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-border-subtle/50 bg-white p-8 shadow-sm transition-all duration-300 active:scale-[0.98] sm:w-[320px] md:w-auto md:hover:-translate-y-2 md:hover:shadow-xl"
+              className="group flex w-[80vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-border-subtle/50 bg-rice p-8 shadow-sm transition-all duration-300 active:scale-[0.98] sm:w-[320px] md:w-auto md:hover:-translate-y-2 md:hover:shadow-xl"
             >
               <div>
                 <div className="flex gap-1" aria-label="5 estrellas">
