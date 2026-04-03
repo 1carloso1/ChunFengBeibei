@@ -1,19 +1,24 @@
+"use client";
+
 import { Star } from "lucide-react";
 
 const TESTIMONIALS = [
   {
+    title: "Entiendo el porqué de cada palabra",
     name: "María Fernanda G.",
-    location: "Ciudad de México, México",
+    location: "Ciudad de México",
     text: "Llevaba meses buscando clases de chino que no fueran solo repetir frases. Aquí entiendo por qué se dice cada cosa. La profesora Li explica las diferencias culturales con una paciencia que agradezco mucho.",
     level: "Alumna HSK 2",
   },
   {
+    title: "Logré más aquí que en un año con apps",
     name: "Sebastián R.",
     location: "Buenos Aires, Argentina",
-    text: "Me sorprendió la calidad de las clases. El grupo pequeño hace que realmente practiques. En tres meses ya puedo mantener conversaciones básicas y leer caracteres simples, algo que no logré con apps después de un año.",
+    text: "Me sorprendió la calidad de las clases. El grupo pequeño hace que realmente practiques. En tres meses ya puedo mantener conversaciones básicas y leer caracteres simples, algo que no logré con apps.",
     level: "Alumno HSK 1",
   },
   {
+    title: "Nativas que entienden el español",
     name: "Carolina P.",
     location: "Bogotá, Colombia",
     text: "Lo que más valoro es que las profesoras son nativas y hablan español. Eso cambia todo, porque pueden explicar los tonos y la gramática de una forma que tiene sentido para nosotros como hispanohablantes.",
@@ -23,44 +28,64 @@ const TESTIMONIALS = [
 
 export default function TestimonialsSection() {
   return (
-    // Cambiamos bg-rice por bg-white
-    <section id="testimonios" className="bg-white py-24 md:py-32 border-t border-border-subtle/50">
+    <section id="testimonios" className="overflow-hidden border-t border-border-subtle/50 bg-white py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         
-        {/* Cabecera de la sección */}
+        {/* Cabecera */}
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold tracking-[0.15em] text-jade uppercase">
+          <p className="text-sm font-bold tracking-[0.15em] uppercase text-jade">
             Testimonios
           </p>
           <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-ink sm:text-4xl lg:text-5xl">
-            Lo que dicen nuestros alumnos
+            Historias de éxito de nuestros alumnos
           </h2>
         </div>
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
-          {TESTIMONIALS.map((testimonial) => (
-            <figure
-              key={testimonial.name}
-              className="flex flex-col rounded-xl border border-border-subtle bg-rice/50 p-7"
+
+        {/* Estructura de Scroll/Grid idéntica a Programas:
+          - Móvil: Carrusel con snap y scroll invisible, tocando bordes (-mx-5 px-5)
+          - Desktop: Grid de 3 columnas
+        */}
+        <div className="mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 sm:gap-8 md:mx-0 md:mt-16 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
+          
+          {TESTIMONIALS.map((testimonial, index) => (
+            <article
+              key={index}
+              // Clases idénticas a Programas (anchos, redondeo 3xl, sombras, hover y active)
+              className="group flex w-[80vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-border-subtle/50 bg-white p-8 shadow-sm transition-all duration-300 active:scale-[0.98] sm:w-[320px] md:w-auto md:hover:-translate-y-2 md:hover:shadow-xl"
             >
-              <div className="flex gap-1" aria-label="5 estrellas">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 fill-gold text-gold"
-                    aria-hidden="true"
-                  />
-                ))}
+              <div>
+                <div className="flex gap-1" aria-label="5 estrellas">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-[#CBA153] text-[#CBA153]"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                
+                <h3 className="mt-6 font-serif text-xl font-bold text-ink">
+                &quot;{testimonial.title}&quot;
+                </h3>
+                
+                <blockquote className="mt-3 text-base leading-relaxed text-ink-light">
+                  {testimonial.text}
+                </blockquote>
               </div>
-              <blockquote className="mt-4 flex-1 text-base leading-relaxed text-ink-light">
-                &ldquo;{testimonial.text}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 border-t border-border-subtle pt-5">
-                <p className="font-semibold text-ink">{testimonial.name}</p>
-                <p className="mt-0.5 text-sm text-ink-muted">
-                  {testimonial.level} &middot; {testimonial.location}
-                </p>
+
+              {/* Pie de la tarjeta idéntico estructuralmente al pie de programas */}
+              <figcaption className="mt-8 flex items-center gap-4 border-t border-border-subtle/30 pt-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-jade/10 text-sm font-bold text-jade">
+                  {testimonial.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-ink">{testimonial.name}</p>
+                  <p className="mt-0.5 text-xs font-medium text-ink-muted">
+                    {testimonial.level} &middot; {testimonial.location}
+                  </p>
+                </div>
               </figcaption>
-            </figure>
+            </article>
           ))}
         </div>
       </div>
