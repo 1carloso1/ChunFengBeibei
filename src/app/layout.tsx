@@ -21,6 +21,7 @@ const sourceSans = Source_Sans_3({
 
 // 2. Tus metadatos definitivos (El SEO y OpenGraph)
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.chunfengbeibei.com"),
   title: "ChunFengBeiBei | Centro de Estudios Culturales",
   description:
     "Domina el chino mandarín con profesoras nativas. Una experiencia educativa online de primer nivel con inmersión cultural, grupos reducidos y excelencia académica.",
