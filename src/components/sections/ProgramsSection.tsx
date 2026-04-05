@@ -1,52 +1,8 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
-import { CheckCircle2, ArrowRight, Target, Zap, Globe2 } from "lucide-react";
-
-const PROGRAMS = [
-  {
-    id: "hsk1",
-    level: "HSK 1",
-    name: "Bases y Supervivencia",
-    target: "Empieza desde cero absoluto y pierde el miedo a hablar en tu primera clase.",
-    icon: <Target className="h-6 w-6 text-imperial" />,
-    color: "amber",
-    outcomes: [
-      "Dominar la pronunciación real (Pinyin y tonos)",
-      "Presentarte con seguridad ante nativos",
-      "Sobrevivir en restaurantes, tiendas y calles",
-      "Leer y escribir tus primeros 150 caracteres"
-    ]
-  },
-  {
-    id: "hsk2",
-    level: "HSK 2",
-    name: "Conversación Activa", // "Activa" suena mucho mejor que "Básica"
-    target: "Deja de traducir en tu mente y empieza a conectar de verdad.",
-    icon: <Zap className="h-6 w-6 text-imperial" />,
-    color: "amber",
-    outcomes: [
-      "Mantener pláticas fluidas sobre tu vida diaria",
-      "Navegar ciudades y viajes sin usar traductor",
-      "Conectar de forma genuina con amigos chinos",
-      "Duplicar tu vocabulario a 300 caracteres"
-    ]
-  },
-  {
-    id: "hsk3",
-    level: "HSK 3",
-    name: "Independencia y Fluidez",
-    target: "Exprésate con total libertad en el día a día y en el trabajo.",
-    icon: <Globe2 className="h-6 w-6 text-imperial" />,
-    color: "amber",
-    outcomes: [
-      "Defender tus opiniones y dar argumentos",
-      "Comprender mensajes y audios de nativos",
-      "Desenvolverte en entornos laborales básicos",
-      "Dominar la gramática media y 600 caracteres"
-    ]
-  }
-];
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { PROGRAMS } from "@/lib/data/programs";
 
 interface ProgramsSectionProps {
   setActiveLevel: Dispatch<SetStateAction<string>>;
@@ -91,7 +47,7 @@ export default function ProgramsSection({ setActiveLevel }: ProgramsSectionProps
     {/* CABECERA TOTALMENTE BLANCA: Eliminamos el bg-rice/30 para máxima limpieza */}
     <div className="border-b border-border-subtle/30 bg-transparent p-8">
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-sm border border-border-subtle/50">
-        {program.icon} {/* Asegúrate que en tu array PROGRAMS, estos iconos tengan className="text-imperial" */}
+        <program.icon className="h-6 w-6 text-imperial" />
       </div>
       <span className="inline-block rounded-md border border-amber-200 bg-gradient-to-r from-amber-50 to-amber-100 px-2.5 py-1 text-xs font-bold tracking-wide text-amber-700">
         {program.level}

@@ -8,78 +8,8 @@ interface ScheduleSectionProps {
   setActiveLevel: Dispatch<SetStateAction<string>>;
 }
 
-// 1. BASE DE DATOS SIMULADA (Mock Data Ampliada para pruebas)
-const MOCK_DB_COURSES = [
-  // HSK 1 - Entre semana
-  {
-    id: "hsk1-mat-1",
-    level: "HSK 1",
-    title: "Chino desde cero",
-    shift: "Matutino",
-    duration: "7 semanas",
-    startDate: "6 de abril de 2026",
-    days: "Martes, Jueves y Sáb",
-    time: "6:00 am",
-    spotsAvailable: 5,
-    format: "weekday",
-    status: "open",
-  },
-  {
-    id: "hsk1-vesp-1",
-    level: "HSK 1",
-    title: "Chino desde cero",
-    shift: "Vespertino",
-    duration: "7 semanas",
-    startDate: "6 de abril de 2026",
-    days: "Lun, Mié y Vie",
-    time: "5:00 pm",
-    spotsAvailable: 2,
-    format: "weekday",
-    status: "almost-full",
-  },
-  // HSK 1 - Fin de semana
-  {
-    id: "hsk1-fds-1",
-    level: "HSK 1",
-    title: "Chino desde cero",
-    shift: "Matutino",
-    duration: "7 semanas",
-    startDate: "11 de abril de 2026",
-    days: "Sábado y Domingo",
-    time: "8:00 am",
-    spotsAvailable: 0,
-    format: "weekend",
-    status: "full", // Este está lleno para probar el filtro de "Ocultar agotados"
-  },
-  // HSK 2 - Entre semana
-  {
-    id: "hsk2-noc-1",
-    level: "HSK 2",
-    title: "Básico Acelerado",
-    shift: "Nocturno",
-    duration: "7 semanas",
-    startDate: "7 de abril de 2026",
-    days: "Martes y Jueves",
-    time: "8:00 pm",
-    spotsAvailable: 4,
-    format: "weekday",
-    status: "open",
-  },
-  // HSK 3 - Fin de semana
-  {
-    id: "hsk3-fds-1",
-    level: "HSK 3",
-    title: "Intermedio Conversacional",
-    shift: "Matutino",
-    duration: "7 semanas",
-    startDate: "11 de abril de 2026",
-    days: "Sábados",
-    time: "10:00 am",
-    spotsAvailable: 1,
-    format: "weekend",
-    status: "almost-full",
-  },
-];
+import { getEnrichedCourses } from "@/lib/data/courses";
+
 
 export default function ScheduleSection({ activeLevel, setActiveLevel }: ScheduleSectionProps) {
 
@@ -87,7 +17,9 @@ const [activeFormat, setActiveFormat] = useState("all");
 const [activeShift, setActiveShift] = useState("Todos");
 const [hideFull, setHideFull] = useState(false); 
 
-const filteredCourses = MOCK_DB_COURSES.filter((course) => {
+const courses = getEnrichedCourses();
+
+const filteredCourses = courses.filter((course) => {
   const matchLevel = activeLevel === "Todos" ? true : course.level === activeLevel;
   const matchFormat = activeFormat === "all" ? true : course.format === activeFormat;
   // NUEVO: Lógica para comparar el turno (Matutino, Vespertino, Nocturno)
@@ -99,7 +31,7 @@ const filteredCourses = MOCK_DB_COURSES.filter((course) => {
 });
 
 // Buscamos el próximo inicio disponible (ignorando los grupos llenos)
-const availableCourses = MOCK_DB_COURSES.filter(course => course.status !== 'full');
+const availableCourses = courses.filter(course => course.status !== 'full');
   
 // Tomamos la fecha del primer curso disponible. 
 // (Nota: Si tu base de datos está ordenada cronológicamente, esto es perfecto. 

@@ -1,22 +1,6 @@
-import { Users, GraduationCap, Globe, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const PILLARS = [
-  {
-    icon: Users,
-    title: "Atención Boutique",
-    text: "Grupos íntimos de máximo 6 personas y clases en vivo. Cada grupo se forma cuidadosamente para asegurar un acompañamiento real, corrección constante de pronunciación y un progreso acelerado.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Excelencia Oficial",
-    text: "Guiados por profesoras nativas, nuestro método progresivo se alinea perfectamente con los niveles oficiales HSK, dándote bases sólidas, certificables a nivel internacional y aplicables desde el día uno.",
-  },
-  {
-    icon: Globe,
-    title: "Inmersión Auténtica",
-    text: "El idioma no existe en el vacío. Integramos de manera natural costumbres, formas de cortesía y festividades tradicionales para que tu aprendizaje sea profundo, significativo y contextualizado.",
-  },
-];
+import { PILLARS } from "@/lib/data/about";
 
 export default function AboutSection() {
   return (

@@ -1,23 +1,6 @@
-import { Milestone, BookOpen, Clock, ArrowRightCircle, ArrowDown } from "lucide-react";
+import { ArrowRightCircle, ArrowDown } from "lucide-react";
 
-// Hemos extraído la "carnita" operativa de tu texto original
-const STEPS = [
-  {
-    icon: BookOpen,
-    title: "El Sistema Modular",
-    description: "Olvídate de compromisos anuales abrumadores. Nuestro aprendizaje se divide en bloques claros y digeribles. Avanzas paso a paso, dominando un módulo antes de pasar al siguiente.",
-  },
-  {
-    icon: Clock,
-    title: "Ciclos de 7 Semanas",
-    description: "Cada nivel (HSK 1 al 6) está segmentado en módulos cortos de 7 semanas. Esto te permite ver progreso real a corto plazo, integrando el estudio fácilmente en tu vida diaria.",
-  },
-  {
-    icon: Milestone,
-    title: "A Tu Propio Ritmo",
-    description: "Al terminar un módulo, decides si continúas inmediatamente o tomas una pausa hasta el siguiente grupo. Tú tienes el control absoluto de tu avance, sin presiones.",
-  },
-];
+import { STEPS } from "@/lib/data/methodology";
 
 export default function MethodologySection() {
   return (
