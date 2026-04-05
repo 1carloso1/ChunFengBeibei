@@ -1,14 +1,17 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { PROGRAMS } from "@/lib/data/programs";
+import { useCarousel } from "@/hooks/useCarousel";
 
 interface ProgramsSectionProps {
   setActiveLevel: Dispatch<SetStateAction<string>>;
 }
 
 export default function ProgramsSection({ setActiveLevel }: ProgramsSectionProps) {
+  const { scrollRef, canScrollLeft, canScrollRight, scroll, checkScrollability } = useCarousel();
+
   return (
 
     <section id="programas" className="bg-rice py-24 md:py-32">
@@ -35,15 +38,49 @@ export default function ProgramsSection({ setActiveLevel }: ProgramsSectionProps
           <ArrowRight className="h-4 w-4 animate-pulse" />
         </div>
 
-        {/* Carrusel (Corregido el centrado y espaciado) */}
-        {/* Truco: -mx-5 px-5 hace que el scroll toque los bordes del celular, permitiendo un centrado perfecto */}
-        <div className="mt-4 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 sm:gap-8 md:mx-0 md:mt-16 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
-          
-        {PROGRAMS.map((program) => (
-  <article 
-    key={program.id}
-    className="group flex w-[80vw] sm:w-[320px] shrink-0 snap-center flex-col overflow-hidden rounded-3xl border border-border-subtle/50 bg-white shadow-sm transition-all duration-300 active:scale-[0.98] md:w-auto md:hover:-translate-y-2 md:hover:shadow-xl"
-  >
+        <div className="relative mt-4 md:mt-16">
+          {/* Controles de navegación: Solo se renderizan si hay más de 3 tarjetas */}
+          {PROGRAMS.length > 3 && (
+            <div className="hidden md:absolute md:-top-16 md:right-0 md:flex md:gap-3">
+              <button 
+                onClick={() => scroll("left")}
+                disabled={!canScrollLeft}
+                className={`flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle/50 bg-white text-ink shadow-sm transition-all 
+                  ${canScrollLeft 
+                    ? "hover:bg-imperial/10 hover:text-imperial active:scale-95" 
+                    : "opacity-30 cursor-not-allowed"
+                  }`}
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button 
+                onClick={() => scroll("right")}
+                disabled={!canScrollRight}
+                className={`flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle/50 bg-white text-ink shadow-sm transition-all 
+                  ${canScrollRight 
+                    ? "hover:bg-imperial/10 hover:text-imperial active:scale-95" 
+                    : "opacity-30 cursor-not-allowed"
+                  }`}
+                aria-label="Siguiente"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          )}
+          {/* Carrusel con evento onScroll integrado y scrollbar oculto */}
+          <div 
+            ref={scrollRef}
+            onScroll={checkScrollability}
+            className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 sm:gap-8 md:mx-0 md:px-0 md:pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            
+          {PROGRAMS.map((program) => (
+            <article 
+              key={program.id}
+              // El ancho md: cambia al calc() mágico para mostrar exactamente 3 y permitir el scroll en monitor
+              className="group flex w-[80vw] sm:w-[320px] shrink-0 snap-center flex-col overflow-hidden rounded-3xl border border-border-subtle/50 bg-white shadow-sm transition-all duration-300 active:scale-[0.98] md:w-[calc(33.333%-1.33rem)] md:hover:-translate-y-2 md:hover:shadow-xl"
+            >
     {/* CABECERA TOTALMENTE BLANCA: Eliminamos el bg-rice/30 para máxima limpieza */}
     <div className="border-b border-border-subtle/30 bg-transparent p-8">
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-sm border border-border-subtle/50">
@@ -87,7 +124,7 @@ export default function ProgramsSection({ setActiveLevel }: ProgramsSectionProps
   </article>
 ))}
         </div>
-
+        </div>
       </div>
     </section>
   );
