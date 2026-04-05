@@ -76,19 +76,21 @@ export default function HeroSection() {
             </ul>
 
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-            <a
-              href="https://wa.me/1234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-jade px-7 py-3.5 text-base font-semibold text-white shadow-sm transition-all hover:bg-jade-dark hover:shadow-md"
-            >
-              <MessageCircle className="h-5 w-5" aria-hidden="true" />
-              Contactar por WhatsApp
-            </a>
+          <a
+            href="https://wa.me/1234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/btn inline-flex items-center justify-center gap-2.5 rounded-lg bg-jade px-7 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-300 md:hover:bg-jade-dark md:hover:shadow-md active:bg-jade-dark active:duration-0 active:scale-95"
+          >
+            <MessageCircle className="h-5 w-5 transition-transform group-active/btn:scale-110 md:group-hover/btn:scale-110" aria-hidden="true" />
+            Contactar por WhatsApp
+          </a>
             {/* Reemplaza la importación de Mail por BookOpen o ArrowDown si quieres */}
-            <a href='#metodologia' 
-            className='inline-flex items-center justify-center gap-2.5 rounded-lg border border-imperial/30 bg-imperial/20 px-7 py-3.5 text-base font-semibold text-imperial transition-all hover:bg-imperial/30 hover:border-imperial/40'>
-              <BookOpen className="h-5 w-5" aria-hidden="true" />
+            <a 
+              href='#metodologia' 
+              className="group/btn inline-flex items-center justify-center gap-2.5 rounded-lg border border-imperial/30 bg-imperial/20 px-7 py-3.5 text-base font-semibold text-imperial transition-all duration-300 md:hover:bg-imperial/30 md:hover:border-imperial/40 active:bg-imperial/30 active:duration-0 active:scale-95"
+            >
+              <BookOpen className="h-5 w-5 transition-transform group-active/btn:scale-110 md:group-hover/btn:scale-110" aria-hidden="true" />
               Conocer metodología
             </a>
           </div>
@@ -109,18 +111,20 @@ export default function HeroSection() {
         </div>
 
         <div className="w-full lg:col-span-5">
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-2xl shadow-imperial/10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/hero.png"
-              alt="Mockup flotante"
-              className="h-full w-full object-cover"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </div>
-        </div>
+  {/* El contenedor maneja el 'hundimiento' en móviles al tocarlo */}
+  <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-2xl shadow-imperial/10 transition-transform duration-300 active:scale-[0.98]">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img
+      src="/hero.png"
+      alt="Mockup flotante"
+      // La imagen maneja el acercamiento elegante en escritorio al pasar el mouse
+      className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
+      loading="eager"
+      decoding="async"
+      fetchPriority="high"
+    />
+  </div>
+</div>
       </div>
     </section>
   );

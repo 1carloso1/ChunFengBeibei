@@ -14,14 +14,16 @@ export default function AboutSection() {
           {/* Usamos order-2 lg:order-1 para que en móviles la imagen siga saliendo debajo del título si lo prefieres, 
               o order-1 lg:order-1 para que salga arriba. Lo estándar es que en móvil el texto vaya primero, 
               así que usaremos order-last lg:order-first */}
-          <div className="order-last lg:order-first relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-white shadow-xl lg:aspect-square group">
-            <div className="absolute inset-0 bg-imperial/5 transition-colors group-hover:bg-transparent z-10" />
+          <div className="group relative order-last aspect-[4/3] w-full overflow-hidden rounded-2xl bg-white shadow-xl transition-transform duration-300 active:scale-[0.98] lg:order-first lg:aspect-square">
+            {/* Capa de color: Le añadí pointer-events-none para que no estorbe y duration-700 para que se desvanezca al mismo ritmo que el zoom */}
+            <div className="pointer-events-none absolute inset-0 z-10 bg-imperial/5 transition-colors duration-700 group-hover:bg-transparent" />
             
             {/* IMAGEN REAL IMPLEMENTADA */}
             <img 
-              src="/caligrafia.jpg" // Asegúrate de que este archivo esté dentro de tu carpeta /public
+              src="/caligrafia.jpg"
               alt="Detalle fotográfico de caligrafía china tradicional realizada a mano con pincel y tinta negra sobre papel de arroz texturizado, representando la esencia de ChunFengBeiBei"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              // Igualamos la duración a 700ms y la escala a 110
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
             />
           </div>
