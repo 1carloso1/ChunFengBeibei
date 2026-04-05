@@ -10,9 +10,10 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row sm:items-start">
           
         {/* Cambiamos Link por un elemento con evento onClick para el Scroll Suave */}
-        <div 
+
+          <div 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex cursor-pointer flex-col items-center gap-4 sm:flex-row sm:items-center"
+            className="group flex cursor-pointer flex-col items-center gap-4 transition-transform active:scale-95 sm:flex-row sm:items-center"
           >
             
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -25,7 +26,7 @@ export default function Footer() {
             />
             
             <div className="text-center sm:text-left">
-              <span className="font-serif text-xl font-bold tracking-[0.12em] text-white transition-colors duration-300 group-hover:text-jade">
+              <span className="font-serif text-xl font-bold tracking-[0.12em] text-white transition-colors duration-300 md:group-hover:text-jade group-active:text-jade group-active:duration-0">
                 ChunFengBeiBei
               </span>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-jade/80">
@@ -58,8 +59,8 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-6 text-xs text-rice/40">
-            <a href="#" className="transition-colors duration-300 hover:text-jade">Aviso de Privacidad</a>
-            <a href="#" className="transition-colors duration-300 hover:text-jade">Términos y Condiciones</a>
+            <a href="#" className="inline-block transition-all duration-300 md:hover:text-jade active:scale-95 active:text-jade">Aviso de Privacidad</a>
+            <a href="#" className="inline-block transition-all duration-300 md:hover:text-jade active:scale-95 active:text-jade">Términos y Condiciones</a>
           </div>
         </div>
 
@@ -75,8 +76,8 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      // Hover unificado: el icono se vuelve jade y aparece un fondo sutil translúcido jade
-      className="flex h-10 w-10 items-center justify-center rounded-lg text-rice/50 transition-all duration-300 hover:bg-jade/10 hover:text-jade"
+      // Escritorio: Hover suave. Móvil: Hundimiento instantáneo y color
+      className="flex h-10 w-10 items-center justify-center rounded-lg text-rice/50 transition-all duration-300 md:hover:bg-jade/10 md:hover:text-jade active:bg-jade/20 active:text-jade active:scale-90 active:duration-0"
     >
       {children}
     </a>
