@@ -151,8 +151,3 @@ La arquitectura sigue las convenciones del App Router de Next.js, separando estr
 ├── tailwind.config.ts          # Configuración del tema y colores corporativos
 └── package.json                # Manifiesto de dependencias y scripts
 ```
-
-### Notas sobre el README:
-* Puse insignias (badges) de **Next.js**, **React 19**, **Tailwind 4**, e incluso agregué las de **Wix** y **Manychat** para que tu portafolio se vea robusto.
-* En las secciones que aún no existen (API, Variables de Entorno), agregué el emoji 🚧 y aclaré que está "En Desarrollo" o es un "Proceso Futuro". Esto le demuestra a otros desarrolladores (o reclutadores) que tienes una **visión clara de la arquitectura técnica** a futuro, lo cual es muy valioso.
-* Simplifiqué el árbol de carpetas (quitando los archivos `.js` compilados del build) para que solo muestre el código fuente (`src/`), que es lo que realmente importa en la documentación de un repositorio.
