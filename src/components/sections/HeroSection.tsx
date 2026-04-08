@@ -1,4 +1,5 @@
 import { MessageCircle, BookOpen } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 export default function HeroSection() {
   return (
@@ -77,7 +78,7 @@ export default function HeroSection() {
 
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
           <a
-            href="https://wa.me/1234567890"
+            href={getWhatsAppUrl("Información")}
             target="_blank"
             rel="noopener noreferrer"
             className="group/btn inline-flex items-center justify-center gap-2.5 rounded-lg bg-jade px-7 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-300 md:hover:bg-jade-dark md:hover:shadow-md active:bg-jade-dark active:duration-0 active:scale-95"

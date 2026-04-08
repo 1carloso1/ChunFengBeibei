@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "#sobre-nosotros", label: "Nosotros" },
@@ -42,7 +43,9 @@ export default function Navbar() {
 
         {/* MEJORA 1: CTA DE ESCRITORIO CON ANIMACIÓN HOMOGÉNEA */}
         <a
-          href="#contacto"
+          href={getWhatsAppUrl("Información")}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden rounded-full bg-jade px-6 py-2.5 text-sm font-bold text-white shadow-sm transition-all duration-300 md:inline-flex md:hover:bg-jade-dark md:hover:shadow-md active:duration-0 active:scale-95"
         >
           Inscríbete

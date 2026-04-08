@@ -1,6 +1,9 @@
 "use client"; 
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/lib/data/socials";
+import { CONTACT_INFO } from "@/lib/data/socials";
+import { getWhatsAppUrl } from "@/lib/utils";
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -69,18 +72,18 @@ export default function Footer() {
                 Contacto Directo
               </span>
               <a 
-                href="mailto:chinoconbeibei@gmail.com" 
+                href={`mailto:${CONTACT_INFO.email}`}
                 className="block text-sm text-rice/60 transition-all duration-300 md:hover:text-jade active:text-jade active:scale-95"
               >
-                chinoconbeibei@gmail.com
+               {CONTACT_INFO.email}
               </a>
               <a 
-                href="https://wa.me/524921790077" 
+                href={getWhatsAppUrl("Información")} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="mt-2 block text-sm text-rice/60 transition-all duration-300 md:hover:text-jade active:text-jade active:scale-95"
               >
-                +52 (492) 179-0077
+                {CONTACT_INFO.whatsappFormatted}
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState, Dispatch, SetStateAction } from "react";
 import { Clock, Calendar, Users, ArrowRight, BookOpen, CalendarDays, EyeOff, Star} from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 interface ScheduleSectionProps {
   activeLevel: string;
@@ -244,7 +245,7 @@ return (
             {/* OPCIÓN 1: La Venta (VIP) */}
             <div className="flex w-full flex-col items-center gap-2 sm:w-auto">
             <button 
-              onClick={() => window.open(`https://wa.me/tu-numero?text=Hola!%20Me%20interesan%20las%20Clases%20VIP%201%20a%201%20para%20el%20nivel%20${activeLevel.replace(' ', '%20')}.`, '_blank')}
+              onClick={() => window.open(getWhatsAppUrl("Información"), '_blank')}
               className="group/btn flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-8 py-4 text-sm font-bold text-white transition-all duration-300 md:hover:bg-jade active:bg-jade active:scale-95 active:duration-0 sm:w-auto"
             >
               Consultar horarios VIP
@@ -258,7 +259,7 @@ return (
             {/* OPCIÓN 2: La Lista de Espera (Grupal) */}
             <div className="flex w-full flex-col items-center gap-2 sm:w-auto">
             <button 
-              onClick={() => window.open(`https://wa.me/tu-numero?text=Hola!%20Quiero%20anotarme%20en%20la%20lista%20de%20espera%20para%20el%20próximo%20grupo%20de%20${activeLevel.replace(' ', '%20')}.`, '_blank')}
+              onClick={() => window.open(getWhatsAppUrl("Información"), '_blank')}
               className="group/btn flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-rice px-8 py-4 text-sm font-bold text-ink transition-all duration-300 md:hover:border-jade md:hover:text-jade active:border-jade active:text-jade active:scale-95 active:duration-0 sm:w-auto"
             >
               Avisarme de nuevos grupos
@@ -400,7 +401,7 @@ return (
       
       {/* Botón en Amber para mantener la consistencia */}
       <button 
-        onClick={() => window.open("https://wa.me/tu-numero?text=Hola!%20Me%20gustaría%20agendar%20mi%20programa%20VIP%201%20a%201%20y%20personalizar%20mi%20horario.", '_blank')}
+        onClick={() => window.open(getWhatsAppUrl("Información"), '_blank')}
         className="group/vip flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-sm font-bold text-emerald-950 transition-all duration-300 md:hover:bg-emerald-50 md:hover:shadow-lg md:hover:shadow-white/10 active:scale-95 active:bg-emerald-100 active:duration-0 sm:w-auto"
       >
         

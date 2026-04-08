@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircle, ArrowRight } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 export default function CTASection() {
   return (
@@ -27,7 +28,7 @@ export default function CTASection() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-5">
           <a
-            href="https://wa.me/TUNUMERODEWHATSAPP" 
+            href={getWhatsAppUrl("Información")}
             target="_blank"
             rel="noopener noreferrer"
             // Botón idéntico al de tu banner VIP: Blanco puro, texto esmeralda, hover suave
