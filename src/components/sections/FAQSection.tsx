@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
+import { getWhatsAppUrl } from "@/lib/utils";
 import { FAQS } from "@/lib/data/faqs";
 
 export default function FAQSection() {
@@ -28,7 +28,7 @@ export default function FAQSection() {
           <p className="mt-6 text-lg leading-relaxed text-ink-light">
             Si tu pregunta no está aquí, siéntete libre de{" "}
             <a 
-              href="https://wa.me/tu-numero-aqui" 
+              href={getWhatsAppUrl("Información")}
               target="_blank" 
               rel="noopener noreferrer"
               className="font-semibold text-jade underline decoration-jade/30 underline-offset-4 transition-colors hover:decoration-jade"
