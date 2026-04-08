@@ -38,10 +38,14 @@ export default function HeroSection() {
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-16">
         <div className="max-w-3xl text-center sm:text-left lg:col-span-7">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-imperial/15 bg-imperial/5 px-4 py-1.5 text-sm font-medium text-imperial">
-            <span className="h-2 w-2 rounded-full bg-imperial" aria-hidden="true" />
-            Inscripciones abiertas
-          </div>
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-imperial/15 bg-imperial/5 px-4 py-1.5 text-sm font-medium text-imperial">
+          {/* Punto animado estilo "Live / Activo" */}
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-imperial opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-imperial"></span>
+          </span>
+          Inscripciones abiertas
+        </div>
 
           <h1 className="font-serif text-4xl leading-[1.1] font-bold tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-7xl">
             Aprende el idioma del futuro{" "}
