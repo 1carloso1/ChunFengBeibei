@@ -5,9 +5,18 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     // Aquí pegaremos la URL que nos dará Make.com en el siguiente paso
-    const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/7e32dag84u07ls8aywqxbdm8vn8uokp1"; 
+    const webhookUrl = process.env.MAKE_WEBHOOK_URL;
 
-    const response = await fetch(MAKE_WEBHOOK_URL, {
+    // 2. Validación de seguridad (Esto quita el error de TypeScript)
+    if (!webhookUrl) {
+      console.error("ERROR: La variable MAKE_WEBHOOK_URL no está definida en el entorno.");
+      return NextResponse.json(
+        { success: false, error: "Configuración del servidor incompleta" },
+        { status: 500 }
+      );
+    }
+
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
