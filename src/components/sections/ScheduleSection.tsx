@@ -2,15 +2,15 @@
 
 import { useState, Dispatch, SetStateAction } from "react";
 import { Clock, Calendar, Users, ArrowRight, BookOpen, CalendarDays, EyeOff, Star} from "lucide-react";
+import { getEnrichedCourses } from "@/lib/data/courses";
 import { getWhatsAppUrl } from "@/lib/utils";
+import { usePreRegistration } from "@/hooks/usePreRegistration";
+import PreRegistrationModal from "@/components/ui/PreRegistrationModal";
 
 interface ScheduleSectionProps {
   activeLevel: string;
   setActiveLevel: Dispatch<SetStateAction<string>>;
 }
-
-import { getEnrichedCourses } from "@/lib/data/courses";
-
 
 export default function ScheduleSection({ activeLevel, setActiveLevel }: ScheduleSectionProps) {
 
@@ -40,6 +40,9 @@ const availableCourses = courses.filter(course => course.status !== 'full');
 const nextStartDate = availableCourses.length > 0 
   ? availableCourses[0].startDate 
   : "Próximamente";
+
+// NUEVO HOOK ACTUALIZADO
+const { isOpen, status, selectedCourse, openModal, closeModal, submitRegistration } = usePreRegistration();
 
 return (
   <section id="horarios" className="relative overflow-hidden bg-white py-24 md:py-32 border-t border-border-subtle/30">
@@ -354,6 +357,8 @@ return (
               {/* Botón: Si es el último, podemos hacerlo vibrar o resaltar más */}
               <button 
                 disabled={course.status === 'full'}
+                // CAMBIO AQUÍ: Llamamos a openModal pasando el curso
+                onClick={() => openModal(course)}
                 className={`group/btn flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition-all duration-300 active:duration-0 ${
                   course.status === 'full' 
                     ? 'bg-border-subtle cursor-not-allowed' 
@@ -412,6 +417,15 @@ return (
     
   </div>
 )}
+
+{/* NUEVO MODAL DE PRE-REGISTRO */}
+      <PreRegistrationModal 
+        isOpen={isOpen} 
+        status={status} // <-- ¡Esta es la línea nueva!
+        course={selectedCourse} 
+        onClose={closeModal} 
+        onSubmit={submitRegistration} 
+      />
 
     </div>
   </section>
