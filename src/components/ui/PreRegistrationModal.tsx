@@ -1,6 +1,6 @@
 // src/components/ui/PreRegistrationModal.tsx
 import { useState, useEffect } from "react";
-import { X, Calendar, Clock, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
+import { X, Calendar, Clock, CheckCircle2, Loader2, ShieldCheck, Users } from "lucide-react";
 import { Course } from "@/types";
 
 interface PreRegistrationModalProps {
@@ -28,8 +28,8 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
 
   // Lógica de Marketing: Título Dinámico
   const getDynamicTitle = () => {
-    if (course.spotsAvailable === 1) return "¡Aparta el último lugar!";
-    if (course.status === 'almost-full') return "¡Casi lleno! Asegura tu cupo";
+    if (course.status === 'almost-full') return "Asegura tu inscripción";
+    // Caso por defecto
     return "Inicia tu inscripción";
   };
 
@@ -68,35 +68,56 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
           ) : (
             <>
               {/* Título Dinámico */}
-              <h2 className={`font-serif text-2xl font-bold transition-colors ${course.spotsAvailable === 1 ? 'text-imperial' : 'text-ink'}`}>
-                {getDynamicTitle()}
-              </h2>
-              <p className="mt-2 text-sm text-ink-light">Déjanos tus datos y te contactaremos por WhatsApp para finalizar el proceso.</p>
+              <h2 className={`font-serif text-2xl font-bold transition-colors ${
+                  course.spotsAvailable === 1 ? 'text-imperial' : 'text-ink'
+                }`}>
+                  {getDynamicTitle()}
+                </h2>
+              <p className="mt-2 text-sm text-ink-light">Déjanos tus datos y te contactaremos por WhatsApp para completar tu Inscripción.</p>
 
               {/* Tarjeta de Resumen (Modo Urgencia) */}
-              <div className={`mt-6 overflow-hidden rounded-2xl border bg-rice p-5 transition-all duration-500 ${
+              {/* Tarjeta de Resumen Sofisticada */}
+              <div className={`mt-6 overflow-hidden rounded-2xl border transition-all duration-300 ${
                 course.spotsAvailable === 1 
-                  ? 'border-imperial shadow-[0_0_15px_rgba(237,66,69,0.2)] animate-[pulse_3s_infinite]' 
-                  : 'border-border-subtle/50 shadow-sm'
+                  ? 'border-imperial/50 bg-gradient-to-b from-white to-imperial/[0.03] shadow-inner' // Estilo elegante de urgencia
+                  : 'border-border-subtle/50 bg-rice shadow-sm' // Estilo normal
               }`}>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="inline-block rounded-md border border-amber-200 bg-gradient-to-r from-amber-50 to-amber-100 px-2.5 py-1 text-xs font-bold tracking-wide text-amber-700 shadow-sm">
-                      {course.level}
+                <div className="p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <span className="inline-block rounded-md border border-amber-200 bg-gradient-to-r from-amber-50 to-amber-100 px-2.5 py-1 text-xs font-bold tracking-wide text-amber-700 shadow-sm">
+                        {course.level}
+                      </span>
+                      <h3 className="mt-2 font-serif text-lg font-bold text-ink leading-tight">
+                        {course.title}
+                      </h3>
+                    </div>
+                    
+                    {/* Etiqueta estática de Turno */}
+                    <span className="flex shrink-0 items-center rounded-full border border-border-subtle/60 bg-white/80 px-3 py-1 text-[10px] font-medium text-ink-light shadow-sm">
+                      Matutino {/* O {course.shift} si tienes el dato */}
                     </span>
-                    <h3 className="mt-2 font-serif text-lg font-bold text-ink">{course.title}</h3>
                   </div>
-                  {course.spotsAvailable === 1 && (
-                    <span className="animate-bounce rounded-full bg-imperial px-3 py-1 text-[10px] font-bold text-white">
-                      ¡ÚLTIMO CUPO!
-                    </span>
-                  )}
-                </div>
 
-                <ul className="mt-4 space-y-2 border-t border-border-subtle/30 pt-4 text-sm text-ink-light">
-                  <li className="flex items-center gap-3"><Calendar className="h-4 w-4 text-jade" /> Inicia: <strong className="text-ink">{course.startDate}</strong></li>
-                  <li className="flex items-center gap-3"><Clock className="h-4 w-4 text-jade" /> {course.days} • <strong className="text-ink">{course.time}</strong></li>
-                </ul>
+                  <ul className="mt-5 space-y-3 border-t border-border-subtle/30 pt-4 text-sm text-ink-light">
+                    <li className="flex items-center gap-3">
+                      <Calendar className="h-4 w-4 shrink-0 text-jade" />
+                      <span>Inicia: <strong className="font-medium text-ink">{course.startDate}</strong></span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Clock className="h-4 w-4 shrink-0 text-jade" />
+                      <span>{course.days} • <strong className="font-medium text-ink">{course.time}</strong></span>
+                    </li>
+                    
+                    {/* Integración elegante del estado de cupos en la lista */}
+                    {course.spotsAvailable === 1 && (
+                      <li className="flex items-center gap-3 rounded-md p-2 text-imperial">
+                        <Users className="h-4 w-4 shrink-0" />
+                        <span className="font-bold text-xs tracking-wide">¡ÚLTIMO LUGAR DISPONIBLE!</span>
+                      </li>
+                    )}
+                  </ul>
+                </div>
               </div>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -111,16 +132,20 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
                 </div>
 
                 {/* Checkbox Legal de Marketing */}
-                <div className="flex items-start gap-3 rounded-lg bg-border-subtle/10 p-3">
+                {/* Reemplaza el div del checkbox actual por este */}
+
+                {/* Bloque de Aceptación (Diseño Integrado) */}
+                <div className="flex items-start gap-3.5 rounded-xl border border-border-subtle/40 bg-rice p-4">
                   <input 
                     type="checkbox" 
                     id="legal" 
                     checked={agreed}
                     onChange={(e) => setAgreed(e.target.checked)}
-                    className="mt-1 h-4 w-4 rounded border-border-subtle text-jade focus:ring-jade"
+                    // Estas clases aseguran que al marcarse sea Jade y el borde normal sea sutil
+                    className="mt-1 h-4.5 w-4.5 rounded border-border-subtle/80 text-jade shadow-sm focus:ring-jade focus:ring-offset-1 focus:ring-offset-rice transition-colors cursor-pointer"
                   />
-                  <label htmlFor="legal" className="text-xs leading-relaxed text-ink-light">
-                    Al confirmar, aceptas recibir información detallada sobre este curso y el proceso de inscripción vía <strong>WhatsApp</strong>.
+                  <label htmlFor="legal" className="text-xs leading-relaxed text-ink-light cursor-pointer select-none">
+                    Al confirmar, aceptas recibir información detallada sobre este curso y el proceso de inscripción vía <strong className="font-semibold text-jade">WhatsApp</strong>.
                   </label>
                 </div>
 

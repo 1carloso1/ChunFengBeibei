@@ -367,7 +367,7 @@ return (
                       : 'bg-ink md:hover:bg-jade active:bg-jade'
                 } active:scale-95`}
               >
-                {course.status === 'full' ? 'Agotado' : '¡Inscribirme ahora!'}
+                {course.status === 'full' ? 'Agotado' : '¡Reservar mi lugar!'}
                 {course.status !== 'full' && (
                   <ArrowRight className="h-4 w-4 transition-transform group-active/btn:translate-x-1 md:group-hover/btn:translate-x-1" />
                 )}
