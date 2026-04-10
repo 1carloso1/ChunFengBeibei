@@ -43,9 +43,7 @@ export default function Navbar() {
 
         {/* MEJORA 1: CTA DE ESCRITORIO CON ANIMACIÓN HOMOGÉNEA */}
         <a
-          href={getWhatsAppUrl("Información")}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#horarios"
           className="hidden rounded-full bg-jade px-6 py-2.5 text-sm font-bold text-white shadow-sm transition-all duration-300 md:inline-flex md:hover:bg-jade-dark md:hover:shadow-md active:duration-0 active:scale-95"
         >
           Inscríbete
@@ -81,7 +79,7 @@ export default function Navbar() {
 
             <div className="mt-8 w-full px-4"> 
               <a
-                href="#contacto"
+                href="#horarios"
                 onClick={() => setOpen(false)}
                 className="flex w-full items-center justify-center rounded-full bg-jade py-5 text-lg font-bold text-white shadow-xl transition-all duration-300 active:duration-0 active:scale-95"
               >
