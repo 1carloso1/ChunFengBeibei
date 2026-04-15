@@ -74,7 +74,7 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
               </h3>
               
               <p className="mb-8 text-ink-light">
-                Tus datos se guardaron correctamente. Para <strong>asegurar tu cupo</strong> y recibir los detalles de pago, finaliza el proceso en WhatsApp.
+                Tus datos se guardaron correctamente. Para <strong>asegurar tu inscripción</strong> y recibir los detalles de pago, finaliza el proceso en WhatsApp.
               </p>
         
               {/* BOTÓN CON COLOR JADE (Identidad de marca) */}
