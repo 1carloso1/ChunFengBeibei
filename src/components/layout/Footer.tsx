@@ -23,7 +23,7 @@ export default function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo.png"
-              alt="Chunfengbeibei logo"
+              alt="ChunFeng BeiBei logo"
               width={40}
               height={40}
               className="h-10 w-10 object-contain"
@@ -31,7 +31,7 @@ export default function Footer() {
             
             <div className="text-left">
               <span className="font-serif text-xl font-bold tracking-[0.12em] text-white transition-colors duration-300 md:group-hover:text-jade group-active:text-jade group-active:duration-0">
-                ChunFengBeiBei
+                ChunFeng BeiBei
               </span>
               <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-jade/80">
                 Centro de Estudios Culturales
@@ -100,7 +100,7 @@ export default function Footer() {
             </div>
             
             <p className="text-xs text-rice/30">
-              &copy; {currentYear} ChunFengBeiBei. Todos los derechos reservados.
+              &copy; {currentYear} ChunFeng BeiBei. Todos los derechos reservados.
             </p>
           </div>
 

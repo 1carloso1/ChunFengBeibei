@@ -23,7 +23,7 @@ export default function Navbar() {
         <a href="#inicio" className="flex items-center gap-2 group">
           <img src="/logo.png" alt="Logo" className="h-9 w-9 transition-transform duration-300 group-hover:scale-110" />
           <span className="font-serif text-xl font-bold text-ink tracking-[0.12em] transition-colors duration-300 group-hover:text-imperial">
-            ChunFengBeiBei
+            ChunFeng BeiBei
           </span>
         </a>
 

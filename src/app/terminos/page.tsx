@@ -21,7 +21,7 @@ export default function TerminosPage() {
             Términos y Condiciones
           </h1>
           <p className="mt-2 text-sm text-ink-light">
-            ChunFengBeiBei – Centro de Estudios Culturales
+            ChunFeng BeiBei – Centro de Estudios Culturales
           </p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-jade">
             Última actualización: Abril 2026
@@ -40,7 +40,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">1. Naturaleza del servicio</h2>
             <p>
-              ChunFengBeiBei ofrece servicios educativos en línea, principalmente cursos de idioma chino mandarín y actividades culturales relacionadas, impartidos en modalidad en vivo mediante plataformas digitales. Los servicios ofrecidos no constituyen un bien físico, sino un servicio educativo digital de acceso limitado en tiempo y cupo.
+              ChunFeng BeiBei ofrece servicios educativos en línea, principalmente cursos de idioma chino mandarín y actividades culturales relacionadas, impartidos en modalidad en vivo mediante plataformas digitales. Los servicios ofrecidos no constituyen un bien físico, sino un servicio educativo digital de acceso limitado en tiempo y cupo.
             </p>
           </section>
 
@@ -51,7 +51,7 @@ export default function TerminosPage() {
             </p>
             <h3 className="mb-2 mt-4 font-semibold text-ink">2.1 Apertura de grupos</h3>
             <p className="mb-2">
-              Los grupos se abrirán únicamente cuando se alcance el número mínimo de alumnos inscritos definido por ChunFengBeiBei. En caso de que un grupo no alcance el mínimo requerido y no pueda abrirse en la fecha prevista, el participante podrá elegir entre:
+              Los grupos se abrirán únicamente cuando se alcance el número mínimo de alumnos inscritos definido por ChunFeng BeiBei. En caso de que un grupo no alcance el mínimo requerido y no pueda abrirse en la fecha prevista, el participante podrá elegir entre:
             </p>
             <ul className="ml-5 list-disc space-y-1">
               <li>Integrarse a otro grupo disponible del mismo nivel (sujeto a cupo).</li>
@@ -64,7 +64,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">3. Pagos</h2>
             <p>
-              Todos los precios se expresan en pesos mexicanos (MXN), salvo que se indique lo contrario. Los pagos se realizan a través de las plataformas habilitadas (por ejemplo, MercadoPago u otras). ChunFengBeiBei no almacena datos bancarios de los participantes.
+              Todos los precios se expresan en pesos mexicanos (MXN), salvo que se indique lo contrario. Los pagos se realizan a través de las plataformas habilitadas (por ejemplo, MercadoPago u otras). ChunFeng BeiBei no almacena datos bancarios de los participantes.
             </p>
           </section>
 
@@ -74,7 +74,7 @@ export default function TerminosPage() {
               Al realizar el pago, se bloquea un cupo exclusivo para ti y se inicia la planificación académica. Por ello, no se emiten reembolsos automáticos ni antes ni después de iniciado el curso.
             </p>
             <p className="mb-2">
-              En casos excepcionales y debidamente justificados, ChunFengBeiBei podrá evaluar alternativas como:
+              En casos excepcionales y debidamente justificados, ChunFeng BeiBei podrá evaluar alternativas como:
             </p>
             <ul className="ml-5 list-disc space-y-1">
               <li>Cambio de grupo (sujeto a disponibilidad).</li>
@@ -91,7 +91,7 @@ export default function TerminosPage() {
               <li>Equipo adecuado (computadora, tablet o teléfono).</li>
             </ul>
             <p>
-              ChunFengBeiBei no se hace responsable por fallas técnicas del participante. La falta de asistencia a clases no da derecho a reembolso ni a reposición automática.
+              ChunFeng BeiBei no se hace responsable por fallas técnicas del participante. La falta de asistencia a clases no da derecho a reembolso ni a reposición automática.
             </p>
           </section>
 
@@ -108,7 +108,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">7. Propiedad intelectual</h2>
             <p>
-              Todo el material didáctico, grabaciones, presentaciones y contenidos son propiedad de ChunFengBeiBei. Está prohibida su reproducción, distribución o uso comercial sin autorización expresa y por escrito.
+              Todo el material didáctico, grabaciones, presentaciones y contenidos son propiedad de ChunFeng BeiBei. Está prohibida su reproducción, distribución o uso comercial sin autorización expresa y por escrito.
             </p>
           </section>
 
@@ -122,7 +122,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">9. Conducta y convivencia</h2>
             <p className="mb-2">
-              ChunFengBeiBei se reserva el derecho de suspender o cancelar la participación de cualquier alumno que incurra en:
+              ChunFeng BeiBei se reserva el derecho de suspender o cancelar la participación de cualquier alumno que incurra en:
             </p>
             <ul className="mb-3 ml-5 list-disc space-y-1">
               <li>Conductas ofensivas o irrespetuosas.</li>
@@ -135,7 +135,7 @@ export default function TerminosPage() {
           <section>
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">10. Modificaciones</h2>
             <p>
-              ChunFengBeiBei podrá actualizar estos Términos y Condiciones cuando sea necesario. La versión vigente será siempre la publicada en los canales oficiales.
+              ChunFeng BeiBei podrá actualizar estos Términos y Condiciones cuando sea necesario. La versión vigente será siempre la publicada en los canales oficiales.
             </p>
           </section>
 

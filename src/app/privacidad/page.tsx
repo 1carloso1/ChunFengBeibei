@@ -21,7 +21,7 @@ export default function PrivacidadPage() {
             Política de Privacidad
           </h1>
           <p className="mt-2 text-sm text-ink-light">
-            ChunFengBeiBei – Centro de Estudios Culturales
+            ChunFeng BeiBei – Centro de Estudios Culturales
           </p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-jade">
             Última actualización: Abril 2026
@@ -34,7 +34,7 @@ export default function PrivacidadPage() {
           <section>
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">Responsable de los datos personales</h2>
             <p>
-              En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), Centro de Estudios Culturales ChunFengBeiBei, con domicilio en Guadalupe, Zacatecas, México, es responsable del tratamiento de sus datos personales.
+              En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), Centro de Estudios Culturales ChunFeng BeiBei, con domicilio en Guadalupe, Zacatecas, México, es responsable del tratamiento de sus datos personales.
             </p>
           </section>
 
@@ -123,7 +123,7 @@ export default function PrivacidadPage() {
             <h2 className="mb-3 font-serif text-xl font-bold text-ink">Contacto</h2>
             <p className="mb-2">Si tiene preguntas o inquietudes sobre esta Política de Privacidad, puede contactarnos en:</p>
             <ul className="space-y-2">
-              <li><span className="font-medium text-ink">Nombre de la empresa:</span> Centro de Estudios Culturales ChunFengBeiBei</li>
+              <li><span className="font-medium text-ink">Nombre de la empresa:</span> Centro de Estudios Culturales ChunFeng BeiBei</li>
               <li><span className="font-medium text-ink">Correo electrónico:</span> <a href="mailto:chinoconbeibei@gmail.com" className="text-jade hover:underline">chinoconbeibei@gmail.com</a></li>
               <li><span className="font-medium text-ink">Teléfono:</span> <a href="tel:+5214921790077" className="text-jade hover:underline">+52 1 492179 0077</a></li>
             </ul>

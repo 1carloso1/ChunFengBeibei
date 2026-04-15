@@ -21,7 +21,7 @@ export default function AboutSection() {
             {/* IMAGEN REAL IMPLEMENTADA */}
             <img 
               src="/caligrafia.jpg"
-              alt="Detalle fotográfico de caligrafía china tradicional realizada a mano con pincel y tinta negra sobre papel de arroz texturizado, representando la esencia de ChunFengBeiBei"
+              alt="Detalle fotográfico de caligrafía china tradicional realizada a mano con pincel y tinta negra sobre papel de arroz texturizado, representando la esencia de ChunFeng BeiBei"
               // Igualamos la duración a 700ms y la escala a 110
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"

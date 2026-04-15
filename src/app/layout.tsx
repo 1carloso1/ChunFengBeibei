@@ -22,7 +22,7 @@ const sourceSans = Source_Sans_3({
 // 2. Tus metadatos definitivos (El SEO y OpenGraph)
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.chunfengbeibei.com"),
-  title: "ChunFengBeiBei | Centro de Estudios Culturales",
+  title: "ChunFeng BeiBei | Centro de Estudios Culturales",
   description:
     "Domina el chino mandarín con profesoras nativas. Una experiencia educativa online de primer nivel con inmersión cultural, grupos reducidos y excelencia académica.",
   keywords: [
@@ -35,23 +35,23 @@ export const metadata: Metadata = {
     "estudiar mandarín",
   ],
   openGraph: {
-    title: "ChunFengBeiBei | Aprende Chino Mandarín",
+    title: "ChunFeng BeiBei | Aprende Chino Mandarín",
     description: "El idioma del futuro con el alma de su cultura. Metodología inmersiva y atención personalizada.",
     type: "website",
     locale: "es_ES",
-    siteName: "ChunFengBeiBei",
+    siteName: "ChunFeng BeiBei",
     images: [
       {
         url: "/logo.png", 
         width: 1200,
         height: 630,
-        alt: "ChunFengBeiBei - Centro de Estudios Culturales",
+        alt: "ChunFeng BeiBei - Centro de Estudios Culturales",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ChunFengBeiBei | Centro de Estudios Culturales",
+    title: "ChunFeng BeiBei | Centro de Estudios Culturales",
     description: "El idioma del futuro con el alma de su cultura. Estudia chino con profesoras nativas.",
     images: ["/logo.png"],
   },
