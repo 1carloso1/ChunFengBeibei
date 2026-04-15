@@ -1,7 +1,8 @@
 // src/components/ui/PreRegistrationModal.tsx
 import { useState, useEffect } from "react";
-import { X, Calendar, Clock, CheckCircle2, Loader2, ShieldCheck, Users } from "lucide-react";
+import { X, Calendar, Clock, CheckCircle2, Loader2, Users, ArrowRight, MessageCircle } from "lucide-react";
 import { Course } from "@/types";
+import { getWhatsAppUrl } from "@/lib/utils";
 
 interface PreRegistrationModalProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false); // Estado para el checkbox legal
+  
 
   useEffect(() => {
     if (!isOpen) {
@@ -25,6 +27,11 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
   }, [isOpen]);
 
   if (!isOpen || !course) return null;
+
+  const successMessage = `Hola Chunfeng Beibei. Me pre-registré en la web y solicito apoyo para completar mi inscripción.
+
+  Nombre: ${name}
+  Código: ${course.scheduleCode}`;
 
   // Lógica de Marketing: Título Dinámico
   const getDynamicTitle = () => {
@@ -57,13 +64,40 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
 
         <div className="p-8">
           {status === 'success' ? (
-            <div className="flex flex-col items-center py-6 text-center animate-in zoom-in duration-500">
-              <CheckCircle2 className="mb-4 h-16 w-16 text-jade" />
-              <h2 className="font-serif text-2xl font-bold text-ink">¡Registro Exitoso!</h2>
-              <p className="mt-3 text-ink-light leading-relaxed">
-                Tu información fue almacenada correctamente. Pronto te contactaremos por <strong>WhatsApp</strong> para tu nivel {course.level}.
+              <div className="flex flex-col items-center py-6 text-center animate-in zoom-in duration-500">
+              <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-jade/10 text-jade animate-bounce-short">
+                <CheckCircle2 className="h-10 w-10" />
+              </div>
+              
+              <h3 className="mb-2 text-2xl font-serif font-bold text-ink">
+                ¡Casi listo, {name.split(' ')[0]}!
+              </h3>
+              
+              <p className="mb-8 text-ink-light">
+                Tus datos se guardaron correctamente. Para <strong>asegurar tu cupo</strong> y recibir los detalles de pago, finaliza el proceso en WhatsApp.
               </p>
-              <button onClick={onClose} className="mt-8 w-full rounded-xl bg-ink px-4 py-3 text-sm font-bold text-white hover:bg-ink-light">Entendido</button>
+        
+              {/* BOTÓN CON COLOR JADE (Identidad de marca) */}
+              <a 
+                href={getWhatsAppUrl(successMessage)} // 2. Pasamos el mensaje aquí
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-jade px-6 py-4 text-lg font-bold text-white shadow-lg shadow-jade/20 transition-all hover:bg-jade-dark hover:scale-[1.02] active:scale-95"
+              >
+                <MessageCircle className="h-6 w-6 fill-current" />
+                Finalizar en WhatsApp
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+        
+              {/* 3. Etiqueta aclaratoria para el código */}
+              <div className="mt-6 flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-ink-light/40">
+                  Referencia de inscripción
+                </span>
+                <span className="text-xs font-mono font-medium text-ink-light/60">
+                  {course.scheduleCode}
+                </span>
+              </div>
             </div>
           ) : (
             <>
@@ -73,7 +107,9 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
                 }`}>
                   {getDynamicTitle()}
                 </h2>
-              <p className="mt-2 text-sm text-ink-light">Déjanos tus datos y te contactaremos por WhatsApp para completar tu Inscripción.</p>
+                <p className="mt-2 text-sm text-ink-light">
+                  Ingresa tus datos para pre-registrarte y generar tu enlace directo a WhatsApp, donde completaremos tu inscripción.
+                </p>
 
               {/* Tarjeta de Resumen (Modo Urgencia) */}
               {/* Tarjeta de Resumen Sofisticada */}
@@ -145,7 +181,7 @@ export default function PreRegistrationModal({ isOpen, status, course, onClose, 
                     className="mt-1 h-4.5 w-4.5 rounded border-border-subtle/80 text-jade shadow-sm focus:ring-jade focus:ring-offset-1 focus:ring-offset-rice transition-colors cursor-pointer"
                   />
                   <label htmlFor="legal" className="text-xs leading-relaxed text-ink-light cursor-pointer select-none">
-                    Al confirmar, aceptas recibir información detallada sobre este curso y el proceso de inscripción vía <strong className="font-semibold text-jade">WhatsApp</strong>.
+                    Al confirmar, aceptas iniciar tu proceso de inscripción y recibir asistencia con tu proceso vía <strong className="font-semibold text-jade">WhatsApp</strong>.
                   </label>
                 </div>
 

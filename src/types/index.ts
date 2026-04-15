@@ -22,14 +22,15 @@ export interface Program {
   outcomes: string[];
 }
 
-// La información CRUDA que viene de Wix/DB
+// La información CRUDA que viene de la Base de Datos / Google Sheets
 export interface RawCourse {
   id: string;
+  scheduleCode: string; 
   level: string;
   title: string;
   shift: string;
   duration: string;
-  startDate: string; // Idealmente un ISO: "2026-04-06"
+  startDate: string; 
   days: string;
   time: string;
   spotsAvailable: number;
