@@ -7,8 +7,11 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import ProgramsAndScheduleWrapper from "@/components/sections/ProgramsAndScheduleWrapper";
+import { getLocalCourses } from "@/lib/googleSheets";
 
-export default function Home() {
+export default async function Home() {
+  const coursesFromCSV = await getLocalCourses();
+
   return (
     <>
       <Navbar />
@@ -16,7 +19,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <MethodologySection />
-        <ProgramsAndScheduleWrapper />
+        <ProgramsAndScheduleWrapper initialCourses={coursesFromCSV}/>
         <FAQSection />
         <TestimonialsSection />
         <ContactSection />

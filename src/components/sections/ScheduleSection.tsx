@@ -2,7 +2,7 @@
 
 import { useState, Dispatch, SetStateAction } from "react";
 import { Clock, Calendar, Users, ArrowRight, BookOpen, CalendarDays, EyeOff, Star} from "lucide-react";
-import { getEnrichedCourses } from "@/lib/data/courses";
+import { Course } from "@/types";
 import { getWhatsAppUrl } from "@/lib/utils";
 import { usePreRegistration } from "@/hooks/usePreRegistration";
 import PreRegistrationModal from "@/components/ui/PreRegistrationModal";
@@ -10,15 +10,16 @@ import PreRegistrationModal from "@/components/ui/PreRegistrationModal";
 interface ScheduleSectionProps {
   activeLevel: string;
   setActiveLevel: Dispatch<SetStateAction<string>>;
+  initialCourses: Course[];
 }
 
-export default function ScheduleSection({ activeLevel, setActiveLevel }: ScheduleSectionProps) {
+export default function ScheduleSection({ activeLevel, setActiveLevel, initialCourses }: ScheduleSectionProps) {
 
 const [activeFormat, setActiveFormat] = useState("all"); 
 const [activeShift, setActiveShift] = useState("Todos");
 const [hideFull, setHideFull] = useState(false); 
 
-const courses = getEnrichedCourses();
+const courses = initialCourses;
 
 const filteredCourses = courses.filter((course) => {
   const matchLevel = activeLevel === "Todos" ? true : course.level === activeLevel;
