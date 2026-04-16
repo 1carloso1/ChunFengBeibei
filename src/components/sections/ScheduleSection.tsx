@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, Dispatch, SetStateAction } from "react";
-import { Clock, Calendar, Users, ArrowRight, BookOpen, CalendarDays, EyeOff, Star} from "lucide-react";
+import { Clock, Calendar, Users, ArrowRight, BookOpen, CalendarDays, EyeOff, Star, Plus} from "lucide-react";
 import { Course } from "@/types";
 import { getWhatsAppUrl } from "@/lib/utils";
 import { usePreRegistration } from "@/hooks/usePreRegistration";
@@ -15,35 +15,36 @@ interface ScheduleSectionProps {
 
 export default function ScheduleSection({ activeLevel, setActiveLevel, initialCourses }: ScheduleSectionProps) {
 
-const [activeFormat, setActiveFormat] = useState("all"); 
-const [activeShift, setActiveShift] = useState("Todos");
-const [hideFull, setHideFull] = useState(false); 
+  const [activeFormat, setActiveFormat] = useState("all"); 
+  const [activeShift, setActiveShift] = useState("Todos");
+  const [hideFull, setHideFull] = useState(false); 
+  const [visibleCount, setVisibleCount] = useState(6); 
 
-const courses = initialCourses;
+  const courses = initialCourses;
 
-const filteredCourses = courses.filter((course) => {
-  const matchLevel = activeLevel === "Todos" ? true : course.level === activeLevel;
-  const matchFormat = activeFormat === "all" ? true : course.format === activeFormat;
-  // NUEVO: Lógica para comparar el turno (Matutino, Vespertino, Nocturno)
-  const matchShift = activeShift === "Todos" ? true : course.shift === activeShift;
-  const matchAvailability = hideFull ? course.spotsAvailable > 0 : true;
+  const filteredCourses = courses.filter((course) => {
+    const matchLevel = activeLevel === "Todos" ? true : course.level === activeLevel;
+    const matchFormat = activeFormat === "all" ? true : course.format === activeFormat;
+    // NUEVO: Lógica para comparar el turno (Matutino, Vespertino, Nocturno)
+    const matchShift = activeShift === "Todos" ? true : course.shift === activeShift;
+    const matchAvailability = hideFull ? course.spotsAvailable > 0 : true;
 
-  // Ahora la tarjeta debe cumplir 4 condiciones
-  return matchLevel && matchFormat && matchShift && matchAvailability;
-});
+    // Ahora la tarjeta debe cumplir 4 condiciones
+    return matchLevel && matchFormat && matchShift && matchAvailability;
+  });
 
-// Buscamos el próximo inicio disponible (ignorando los grupos llenos)
-const availableCourses = courses.filter(course => course.status !== 'full');
-  
-// Tomamos la fecha del primer curso disponible. 
-// (Nota: Si tu base de datos está ordenada cronológicamente, esto es perfecto. 
-// Si no, podríamos agregar un sort() más adelante).
-const nextStartDate = availableCourses.length > 0 
-  ? availableCourses[0].startDate 
-  : "Próximamente";
+  const displayedCourses = filteredCourses.slice(0, visibleCount);
+  const hasMore = filteredCourses.length > visibleCount;
 
-// NUEVO HOOK ACTUALIZADO
-const { isOpen, status, selectedCourse, openModal, closeModal, submitRegistration } = usePreRegistration();
+  // Buscamos el próximo inicio disponible (ignorando los grupos llenos)
+  const availableCourses = courses.filter(course => course.status !== 'full');
+    
+  // Tomamos la fecha del primer curso disponible. 
+  const nextStartDate = availableCourses.length > 0 
+    ? availableCourses[0].startDate 
+    : "Próximamente";
+
+  const { isOpen, status, selectedCourse, openModal, closeModal, submitRegistration } = usePreRegistration();
 
 return (
   <section id="horarios" className="relative overflow-hidden bg-white py-24 md:py-32 border-t border-border-subtle/30">
@@ -148,7 +149,10 @@ return (
               {["Todos", "HSK 1", "HSK 2", "HSK 3"].map((level) => (
                 <button
                   key={level}
-                  onClick={() => setActiveLevel(level)}
+                  onClick={() => {
+                    setActiveLevel(level);
+                    setVisibleCount(6); // <-- Reinicia el límite al filtrar
+                  }}
                   className={`flex-1 whitespace-nowrap rounded-md px-4 py-1.5 text-sm font-medium transition-all active:scale-95 sm:flex-none ${
                     activeLevel === level
                       ? "bg-jade text-white shadow-sm" // <--- Color Jade para el seleccionado
@@ -202,7 +206,7 @@ return (
         </div>
 
           {/* --- FILA 2: Opciones de Vista (Alineada a la izquierda) --- */}
-          <div className="flex items-center justify-between border-t border-border-subtle/50 pt-5 md:justify-start md:gap-4">
+          {/* <div className="flex items-center justify-between border-t border-border-subtle/50 pt-5 md:justify-start md:gap-4">
             <span 
               className="flex cursor-pointer items-center gap-2 text-sm font-semibold text-ink-light" 
               onClick={() => setHideFull(!hideFull)}
@@ -222,7 +226,7 @@ return (
                 hideFull ? "translate-x-5" : "translate-x-0"
               }`} />
             </button>
-          </div>
+          </div> */}
 
       </div>
 
@@ -290,13 +294,14 @@ return (
       )}
 
       {/* Cuadrícula de Cursos FILTRADOS */}
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredCourses.map((course) => (
+      {/* Contenedor Híbrido: Scroll en móvil, Grid en PC */}
+      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {displayedCourses.map((course) => (
           <article
-            key={course.id}
-            className={`group flex flex-col justify-between overflow-hidden rounded-2xl border bg-rice p-6 shadow-sm transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-md active:scale-[0.98] ${
-              course.status === 'full' ? 'border-border-subtle/30 opacity-75 grayscale-[0.5]' : 'border-border-subtle/50 md:hover:border-jade/30'
-            }`}
+          key={course.id}
+          className={`group flex flex-col justify-between overflow-hidden rounded-2xl border bg-rice p-6 shadow-sm transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-md active:scale-[0.98] ${
+            course.status === 'full' ? 'border-border-subtle/30 opacity-75 grayscale-[0.5]' : 'border-border-subtle/50 md:hover:border-jade/30'
+          }`}
           >
             <div>
               <div className="mb-4 flex items-start justify-between">
@@ -377,6 +382,18 @@ return (
           </article>
         ))}
       </div>
+
+      {hasMore && (
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setVisibleCount(prev => prev + 6)}
+            className="group flex items-center gap-2 rounded-full border border-border-subtle bg-rice px-8 py-3 text-sm font-bold text-ink transition-all hover:border-jade hover:text-jade active:scale-95 shadow-sm"
+          >
+            Ver más horarios disponibles
+            <Plus className="h-4 w-4 transition-transform group-hover:rotate-90" />
+          </button>
+        </div>
+      )}
 
       {/* --- BANNER VIP: Siempre visible como Upsell Premium --- */}
 {filteredCourses.length > 0 && (

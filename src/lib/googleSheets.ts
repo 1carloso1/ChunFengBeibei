@@ -59,7 +59,7 @@ export async function getLiveCourses(): Promise<Course[]> {
       const tituloDinamico = TITULOS_POR_NIVEL[nivelFormat];
 
       // -- LÓGICA MATEMÁTICA PARA LOS CUPOS --
-      const cupoMax = parseInt(fila.cupo_max) || 6;
+      const cupoMax = parseInt(fila.cupo_max || "6") || 6;
       const inscritos = parseInt(fila.inscritos) || 0; // Si la celda está vacía, vale 0
       
       // Hacemos la resta. Math.max asegura que nunca baje de 0.

@@ -69,7 +69,7 @@ export default function HeroSection() {
                   className="h-2 w-2 shrink-0 rounded-full bg-imperial ring-2 ring-imperial/30"
                   aria-hidden="true"
                 />
-                Grupos de 3 a 6 alumnos
+                Grupos de 4 a 6 alumnos
               </li>
               <li className="flex items-center gap-3">
                 <span
