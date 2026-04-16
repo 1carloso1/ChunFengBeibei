@@ -1,20 +1,29 @@
-import fs from 'fs';
-import path from 'path';
 import Papa from 'papaparse';
 import { Course } from '@/types'; // Asegúrate de que la ruta a tu interfaz sea correcta
-
 import { TITULOS_POR_NIVEL } from "@/lib/data/courseTitles";
 
-export async function getLocalCourses(): Promise<Course[]> {
+const scheduleSheetCSV = process.env.SHEET_CSV_URL
+
+export async function getLiveCourses(): Promise<Course[]> {
+
+    if (!scheduleSheetCSV) {
+        console.error("ERROR CRÍTICO: No se encontró la variable SHEET_CSV_URL en el archivo .env");
+        return []; // Retorna vacío para no romper la página
+      }
+
   try {
-    // 1. Buscamos el archivo CSV en la carpeta 'data' de tu proyecto
-    const filePath = path.join(process.cwd(), 'data', 'horarios.csv');
-    
-    // 2. Leemos el contenido del archivo
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    // En lugar de leer el disco duro, "llamamos" a Google
+    const response = await fetch(scheduleSheetCSV, {
+        // Esta línea es ORO: Next.js refrescará los datos cada 5 minutos
+        next: { revalidate: 300 } 
+      });
+
+    if (!response.ok) throw new Error('No se pudo conectar con Google Sheets');
+
+    const csvText = await response.text();
 
     // 3. Convertimos el texto CSV a objetos de JavaScript
-    const { data } = Papa.parse<Record<string, string>>(fileContent, {
+    const { data } = Papa.parse<Record<string, string>>(csvText, {
       header: true, // Usa la primera fila (Índice, Horario...) como llaves
       skipEmptyLines: true,
     });
@@ -31,8 +40,21 @@ export async function getLocalCourses(): Promise<Course[]> {
       const nivelFormat = fila.Nivel ? fila.Nivel.replace('HSK', 'HSK ') : "HSK 1";
 
       // Traducimos el Turno del Excel a formatos visuales
-      const turnoComercial = fila.Turno === 'Mañana' ? 'Matutino' : 
-                             fila.Turno === 'Tarde' ? 'Vespertino' : 'Fin de semana';
+      let turnoBase = fila.Turno;
+
+      // Si es fin de semana, "re-calculamos" el turno basado en la hora
+      if (turnoBase === 'Fin_de_semana') {
+        const horaLower = hora.toLowerCase();
+        
+        if (horaLower.includes('am')) {
+          turnoBase = 'Mañana';
+        } 
+        else {
+          turnoBase = 'Tarde';
+        }
+      }
+      // 3. Ahora asignamos la etiqueta comercial final (solo Matutino o Vespertino)
+      const turnoComercial = turnoBase === 'Mañana' ? 'Matutino' : 'Vespertino';
 
       const tituloDinamico = TITULOS_POR_NIVEL[nivelFormat];
 
@@ -76,7 +98,7 @@ export async function getLocalCourses(): Promise<Course[]> {
     return courses.filter(course => course.scheduleCode !== "");
 
   } catch (error) {
-    console.error("Error leyendo el archivo CSV local:", error);
+    console.error("Error obteniendo datos online desde Google Sheets:", error);
     return []; // Evita que la página colapse si no encuentra el archivo
   }
 }

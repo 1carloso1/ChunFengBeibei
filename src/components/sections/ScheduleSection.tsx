@@ -196,7 +196,7 @@ return (
               <option value="Todos">Cualquier hora</option>
               <option value="Matutino">Matutino (AM)</option>
               <option value="Vespertino">Vespertino (Tarde)</option>
-              <option value="Nocturno">Nocturno (Noche)</option>
+              {/* <option value="Nocturno">Nocturno (Noche)</option> // Por ahora no hay Etiqueta de nocturno */}
             </select>
           </div>
         </div>
