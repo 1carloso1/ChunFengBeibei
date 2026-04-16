@@ -34,6 +34,7 @@ export interface RawCourse {
   days: string;
   time: string;
   spotsAvailable: number;
+  priority?: number;
 }
 
 // La información ENRIQUECIDA que usa tu componente visual

@@ -77,6 +77,10 @@ export async function getLiveCourses(): Promise<Course[]> {
       const format: "weekday" | "weekend" = 
         fila.Tipo_dia === 'Entre_semana' ? 'weekday' : 'weekend';
 
+      // -- LÓGICA DE ORDEN POR IMPORTANCIA --
+        const rawPriority = parseInt(fila['prioridad global']);
+        const priorityValue = isNaN(rawPriority) ? 9999 : rawPriority;
+
       // 5. Retornamos el objeto con la estructura exacta que pide tu interfaz Course
       return {
         id: fila.slot_key || `fallback-id-${index}`,
@@ -89,13 +93,19 @@ export async function getLiveCourses(): Promise<Course[]> {
         days: dias,
         time: hora,
         spotsAvailable: lugaresDisponibles,
+        priority: priorityValue,
         status: status,
         format: format
       };
     });
 
     // 6. Filtramos filas vacías por si el Excel tiene líneas en blanco al final
-    return courses.filter(course => course.scheduleCode !== "");
+    courses.filter(course => course.scheduleCode !== "");
+
+    // 7. Ordenamos de menor a mayor basado en la prioridad (1 va primero, 9999 va al final)
+    courses.sort((a, b) => (a.priority || 9999) - (b.priority || 9999));
+
+    return courses;
 
   } catch (error) {
     console.error("Error obteniendo datos online desde Google Sheets:", error);
