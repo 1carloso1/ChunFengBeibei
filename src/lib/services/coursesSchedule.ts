@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { Course } from '@/types'; // Asegúrate de que la ruta a tu interfaz sea correcta
+import { Course } from '@/types'; 
 import { TITULOS_POR_NIVEL } from "@/lib/data/courseTitles";
 
 const scheduleSheetCSV = process.env.SHEET_CSV_URL

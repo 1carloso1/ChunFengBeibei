@@ -55,3 +55,14 @@ export interface Testimonial {
   text: string;
   level: string;
 }
+
+// types.ts
+export interface Certificate {
+  folio: string;
+  nombreCompleto: string;
+  nivel: string;
+  modulo: string;
+  fechaInicio: string; 
+  fechaFin: string;
+  fechaEmision: string;
+}

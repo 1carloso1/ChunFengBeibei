@@ -7,7 +7,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import ProgramsAndScheduleWrapper from "@/components/sections/ProgramsAndScheduleWrapper";
-import { getLiveCourses } from "@/lib/googleSheets";
+import { getLiveCourses } from "@/lib/services/coursesSchedule";
 
 export default async function Home() {
   const coursesFromCSV = await getLiveCourses();
