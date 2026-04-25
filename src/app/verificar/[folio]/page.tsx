@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link"; // Importamos Link para el botón de acción
 import { getWhatsAppUrl } from "@/lib/utils";
 
-export default async function CertificateValidationPage({ params }: { params: { folio: string } }) {
-  const { folio } = params;
+export default async function CertificateValidationPage({ params }: { params: Promise<{ folio: string }> }) {
+  const { folio } = await params;
   const cert = await getCertificateByFolio(folio);
   
   // Generamos la fecha actual para dar validez "en tiempo real" a la consulta
