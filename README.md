@@ -15,51 +15,47 @@
 
 <br /><br />
 
-**ChunFengBeiBei** es una plataforma web educativa diseñada para facilitar el aprendizaje del idioma chino estándar y la preparación para la certificación oficial HSK. El proyecto combina un diseño editorial premium con una arquitectura frontend moderna para optimizar la conversión de leads y la experiencia del usuario.
+**ChunFengBeiBei** es una Landing Page institucional de alto rendimiento diseñada para posicionar al Centro de Estudios Culturales y Lengua China en la web, atraer nuevos estudiantes y capturar leads cualificados. El proyecto combina un diseño editorial premium optimizado para la conversión con una arquitectura Full-Stack moderna, integrando un sistema de gestión de horarios dinámicos y validación oficial de constancias respaldado por Google Sheets.
 
 </div>
 
 ---
 
-## 🚀 Prueba Rápida (Demo en Vivo)
+## 🚀 Producción
 
-La aplicación se encuentra actualmente desplegada en un entorno de producción:
+La aplicación se encuentra desplegada y operando en su dominio oficial:
 
-1. Abre la aplicación web: [👉 **ChunFengBeiBei Web App**](https://chun-feng-beibei.vercel.app/)
-2. Explora la ruta de aprendizaje HSK y los horarios de los programas.
-3. Desliza por las historias de éxito (Testimonios) utilizando los controles interactivos.
+👉 **[www.chunfengbeibei.com](https://chunfengbeibei.com)**
 
-📱 *Tip: El diseño es **100% responsivo** y cuenta con interacciones adaptativas (Swipe en móviles, controles de carrusel en escritorio).*
-
-🔗 *Nota de Infraestructura: Actualmente alojado bajo el dominio de Vercel. Próximamente se realizará la migración al dominio principal `www.chunfengbeibei.com`.*
+📱 *El diseño es **100% responsivo** y cuenta con interacciones adaptativas (Swipe en móviles, controles de carrusel en escritorio, modales interactivos y Glassmorphism).*
 
 ---
 
-## ✨ Características Principales
+## ✨ Características Principales (Features)
 
-* **UI/UX Editorial y Premium:** Interfaz minimalista y elegante construida con Tailwind CSS, priorizando la legibilidad y la jerarquía visual de la marca.
-* **Carruseles Interactivos Modulares:** Implementación de *Custom Hooks* (`useCarousel`) para manejar la navegación de tarjetas de programas y testimonios, con cálculo matemático de bordes y estados de botones dinámicos.
-* **Estructura Componentizada:** Arquitectura limpia separando lógica, datos (en `src/lib/data`) y presentación visual.
-* **Integración Próxima de Pre-registro (🚧 En Desarrollo):** Formularios en modales interactivos para capturar intención de inscripción antes del contacto directo.
-* **Enrutamiento Inteligente (🚧 En Desarrollo):** Integración con Manychat mediante URLs parametrizadas (`?text=...`) para disparar flujos automatizados en WhatsApp según el programa seleccionado.
+* **Horarios Dinámicos en Tiempo Real:** El componente de horarios se sincroniza en vivo con un documento de Google Sheets. Si un grupo se llena, la UI se actualiza automáticamente mostrando estados como "Últimos lugares" o "Agotado".
+* **Sistema de Validación Oficial (Códigos QR):** Plataforma interna de verificación de constancias. Los alumnos y empleadores pueden escanear el código QR de un certificado de finalización de curso para corroborar su validez en la base de datos (Ruta: `/verificar/[folio]`).
+* **Captura de Leads Integrada:** Formularios modales interactivos que capturan los datos de los interesados (`PreRegistrationModal`) y los envían de forma segura a través de una API interna de hacia una hoja de Google Sheets.
+* **UI/UX Editorial Premium:** Interfaz minimalista construida con Tailwind CSS v4, priorizando la legibilidad, la jerarquía visual de la marca y la conversión.
+* **Arquitectura de Contenidos Desacoplada:** El contenido estático de la página (textos, FAQs, niveles) vive en una carpeta `data/` estructurada, permitiendo al dueño editar copys sin tocar los componentes de React.
 
 ---
 
-## 🛠️ Arquitectura y Tecnologías
+## 🛠️ Stack Tecnológico
 
 ### Frontend (Cliente)
-* **Next.js 15 (App Router):** Framework principal de React para SSR/SSG y enrutamiento optimizado.
-* **React 19:** Biblioteca base de interfaces con soporte para los últimos hooks y transiciones.
+* **Next.js 15 (App Router):** Framework principal para Server-Side Rendering (SSR) y Static Site Generation (SSG) optimizado.
+* **React 19:** Biblioteca base de interfaces con soporte para los últimos hooks.
 * **Tailwind CSS v4:** Motor de utilidades CSS de nueva generación para el diseño responsivo.
-* **Radix UI:** Primitivas sin estilos (`@radix-ui/react-accordion`) para componentes accesibles y robustos.
-* **Lucide React:** Sistema de iconografía SVG ligera y consistente.
+* **Lucide React & Radix UI:** Iconografía SVG ligera y primitivas accesibles.
 
-### Backend y Datos (🚧 En Desarrollo)
-* **Wix Developers:** Funciones serverless y API RESTful para conectar el frontend con la base de datos (Headless CMS) y el CRM de gestión de alumnos.
+### Backend y Base de Datos
+* **Next.js API Routes:** Endpoints Serverless (ej. `/api/register`) para procesar datos de formularios de manera segura sin exponer credenciales en el cliente.
+* **Google Sheets API (Headless CMS):** Utilizado como una base de datos ágil y sin costo para gestionar la disponibilidad de los horarios de clase y la validación de los folios de las constancias.
 
 ---
 
-## 🛠️ Guía de Instalación y Ejecución
+## 🛠️ 🛠️ Guía de Instalación y Ejecución (Entorno Local)
 
 Sigue estos pasos para levantar el entorno de desarrollo en tu máquina local.
 
@@ -78,17 +74,20 @@ cd chunfengbeibei
 npm install
 ```
 
-### 2. Configurar Variables de Entorno (🚧 Proceso Futuro)
+### 2. Configurar Variables de Entorno
 
-Nota: Actualmente el proyecto opera de forma estática con datos locales, pero esta sección se activará pronto.
 
 Crea un archivo `.env.local` en la raíz del proyecto. Este archivo contendrá las credenciales para la conexión con el backend:
 
 ```env
-# Ejemplo de futuras variables
-NEXT_PUBLIC_WIX_API_KEY=tu_api_key_aqui
-NEXT_PUBLIC_WIX_SITE_ID=tu_site_id_aqui
-NEXT_PUBLIC_MANYCHAT_BASE_URL=[https://wa.me/524940000000](https://wa.me/524940000000)
+# API DE Make.com
+MAKE_WEBHOOK_URL= "https://hook.us2.make.com/your_api"
+
+#Url de la hoja de los horarios en Google Sheets
+SHEET_CSV_URL = "https://docs.google.com/your_sheet"
+
+#Url de la hoja de los certificados en Google Sheets
+CERTIFICATES_CSV_URL = "https://docs.google.com/your_sheet"
 ```
 
 ### 3. Ejecutar en Modo Desarrollo
@@ -99,15 +98,10 @@ npm run dev
 
 Esto abrirá la aplicación en `http://localhost:3000`. Cualquier cambio en los archivos de la carpeta `src/` se reflejará instantáneamente gracias al Hot Module Replacement (HMR).
 
-## ☁️ Despliegue (Producción)
+## ☁️ Infraestructura y Despliegue
 
-El sistema está configurado para integración y despliegue continuo (CI/CD) utilizando Vercel. Cualquier push a la rama `main` dispara automáticamente un nuevo build.
+El sistema está configurado para integración y despliegue continuo (CI/CD) utilizando Vercel. Cualquier push a la rama `main` dispara automáticamente un nuevo build en el entorno de producción.
 
-### Pendientes de DevOps:
-
-- [ ] Configuración de récords DNS (A, CNAME) para el dominio personalizado.
-
-- [ ] Emisión y forzado de certificados SSL en producción.
 
 ## 📂 Estructura del Proyecto
 
