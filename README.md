@@ -7,11 +7,7 @@
 <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 <img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
 <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
-
-<br />
-
-<img src="https://img.shields.io/badge/Wix_Developers-131313?style=for-the-badge&logo=wix&logoColor=white" alt="Wix" />
-<img src="https://img.shields.io/badge/Manychat-0084FF?style=for-the-badge&logo=messenger&logoColor=white" alt="Manychat" />
+<img src="https://img.shields.io/badge/Google_Sheets_API-34A853?style=for-the-badge&logo=googlesheets&logoColor=white" alt="Google Sheets" />
 
 <br /><br />
 
