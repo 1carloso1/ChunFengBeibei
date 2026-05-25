@@ -61,7 +61,7 @@ Abre tu terminal y ejecuta:
 
 ```bash
 # Clonar el repositorio (Reemplazar con tu URL real cuando sea público)
-git clone [https://github.com/tu-usuario/chunfengbeibei.git](https://github.com/tu-usuario/chunfengbeibei.git)
+git clone [https://github.com/1carloso1/ChunFengBeibei.git](https://github.com/1carloso1/ChunFengBeibei.git)
 
 # Entrar al directorio
 cd chunfengbeibei
