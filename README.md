@@ -116,38 +116,64 @@ La arquitectura sigue las convenciones del App Router de Next.js, separando estr
 ```text
 /chunfengbeibei
 ├── src/
-│   ├── app/                    # Rutas principales (Next.js App Router)
-│   │   ├── globals.css         # Estilos globales y variables Tailwind
-│   │   ├── layout.tsx          # Wrapper principal (HTML, Body, Metadatos)
-│   │   ├── page.tsx            # Landing page principal
-│   │   ├── privacidad/         # Página de Aviso de Privacidad
-│   │   └── terminos/           # Página de Términos y Condiciones
+│   ├── app/                                 # Rutas de la aplicación (Next.js App Router)
+│   │   ├── api/
+│   │   │   └── register/
+│   │   │       └── route.ts                 # Endpoint backend que procesa los pre-registros (Leads)
+│   │   ├── privacidad/
+│   │   │   └── page.tsx                     # Página legal: Aviso de Privacidad
+│   │   ├── terminos/
+│   │   │   └── page.tsx                     # Página legal: Términos y Condiciones
+│   │   ├── verificar/
+│   │   │   └── [folio]/
+│   │   │       └── page.tsx                 # Sistema dinámico de validación de constancias oficiales (QR)
+│   │   ├── globals.css                      # Estilos globales y variables de Tailwind
+│   │   ├── layout.tsx                       # Wrapper principal (Estructura HTML, Body, y Metadatos SEO)
+│   │   └── page.tsx                         # Landing page principal
 │   │
-│   ├── components/             # Arquitectura de UI
-│   │   ├── layout/             # Componentes globales (Navbar, Footer)
-│   │   ├── sections/           # Bloques masivos de la Landing Page
-│   │   │   ├── HeroSection.tsx
-│   │   │   ├── ProgramsSection.tsx
-│   │   │   ├── TestimonialsSection.tsx
-│   │   │   └── ...
-│   │   └── ui/                 # Componentes atómicos (Botones, Acordeones)
+│   ├── components/                          # Arquitectura de Interfaz de Usuario (UI)
+│   │   ├── layout/                          # Componentes globales de la página
+│   │   │   ├── Footer.tsx                   # Pie de página con enlaces y derechos
+│   │   │   └── Navbar.tsx                   # Barra de navegación principal
+│   │   ├── sections/                        # Bloques masivos que conforman la Landing Page
+│   │   │   ├── AboutSection.tsx             # Sección "Sobre la Academia"
+│   │   │   ├── ContactSection.tsx           # Sección con información de contacto directa
+│   │   │   ├── FAQSection.tsx               # Sección de Preguntas Frecuentes
+│   │   │   ├── HeroSection.tsx              # Portada principal (Primera impresión)
+│   │   │   ├── MethodologySection.tsx       # Explicación de la metodología de enseñanza
+│   │   │   ├── ProgramsAndScheduleWrapper.tsx # Componente padre que inyecta los datos del servidor a los horarios
+│   │   │   ├── ProgramsSection.tsx          # Muestra de niveles de idioma (HSK 1, HSK 2, etc.)
+│   │   │   ├── ScheduleSection.tsx          # Interfaz interactiva para filtrar y ver horarios disponibles
+│   │   │   └── TestimonialsSection.tsx      # Carrusel con reseñas de los alumnos
+│   │   └── ui/                              # Componentes atómicos e interactivos
+│   │       ├── accordion.tsx                # Lógica visual desplegable para las FAQs
+│   │       └── PreRegistrationModal.tsx     # Ventana emergente (Modal) para capturar datos de interesados
 │   │
-│   ├── hooks/                  # Lógica reutilizable de React
-│   │   └── useCarousel.ts      # Custom hook para navegación de tarjetas
+│   ├── hooks/                               # Lógica reutilizable de React (Custom Hooks)
+│   │   ├── useCarousel.ts                   # Manejo de estado y navegación para componentes deslizables
+│   │   └── usePreRegistration.ts            # Lógica, estados y validación del formulario de pre-registro
 │   │
-│   ├── lib/                    # Utilidades y Base de Datos estática temporal
-│   │   ├── data/               # Archivos TS con los copys y catálogos
-│   │   │   ├── courses.ts
-│   │   │   ├── programs.ts
-│   │   │   ├── testimonials.ts
-│   │   │   └── ...
-│   │   └── utils.ts            # Helpers generales (ej. tailwind-merge)
+│   ├── lib/                                 # Utilidades, datos y conexión con servicios externos
+│   │   ├── data/                            # Textos puros: Permite al dueño modificar el contenido sin programar
+│   │   │   ├── about.ts                     # Textos e historia de la sección "Sobre Nosotros"
+│   │   │   ├── courseTitles.ts              # Catálogo que mapea niveles (HSK) a nombres comerciales
+│   │   │   ├── faqs.ts                      # Lista de preguntas y respuestas para editar fácilmente
+│   │   │   ├── methodology.ts               # Pilares y textos de la sección de metodología
+│   │   │   ├── programs.ts                  # Descripciones, requisitos y objetivos de cada nivel
+│   │   │   ├── socials.ts                   # Enlaces centralizados de redes sociales
+│   │   │   └── testimonials.ts              # Base de datos local con las reseñas de los alumnos
+│   │   ├── services/                        # Capa de conexión (Endpoints internos y externos)
+│   │   │   ├── certificates.ts              # Fetcher que busca la validez de los folios en Google Sheets
+│   │   │   ├── coursesSchedule.ts           # Fetcher en tiempo real de los horarios disponibles (Google Sheets)
+│   │   │   └── leadService.ts               # Cliente que envía los datos del interesado hacia la API interna
+│   │   └── utils.ts                         # Funciones de apoyo general (Clases Tailwind, Generador link WhatsApp)
 │   │
-│   └── types/                  # Definiciones de interfaces TypeScript
-│       └── index.ts
+│   └── types/                               # Tipados estrictos para evitar errores en el código
+│       └── index.ts                         # Interfaces globales (Course, Certificate, PreRegistrationData, etc.)
 │
-├── public/                     # Assets estáticos (Imágenes, Logos, Favicon)
-├── next.config.ts              # Configuración del compilador de Next.js
-├── tailwind.config.ts          # Configuración del tema y colores corporativos
-└── package.json                # Manifiesto de dependencias y scripts
+├── public/                                  # Carpeta estática pública (Logos, imágenes, iconos y favicon)
+├── next.config.ts                           # Reglas de compilación y comportamiento de Next.js
+├── tailwind.config.ts                       # Archivo maestro de diseño: Colores, fuentes y breakpoints
+├── tsconfig.json                            # Configuración estricta del compilador de TypeScript
+└── package.json                             # Lista de dependencias del proyecto (React, Tailwind, Lucide, etc.)
 ```

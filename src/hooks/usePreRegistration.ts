@@ -1,6 +1,6 @@
 // src/hooks/usePreRegistration.ts
 import { useState } from "react";
-import { leadService } from "@/services/leadService";
+import { leadService } from "@/lib/services/leadService";
 // Si quieres que sea exacta, puedes importarla de tus tipos
 import { Course } from "@/types";
 

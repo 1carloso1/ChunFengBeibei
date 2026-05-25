@@ -117,13 +117,12 @@ return (
           <div className="my-3 h-[1px] w-16 bg-border-subtle/50 md:my-0 md:h-10 md:w-[1px]" aria-hidden="true" />
 
           {/* Bloque 3: Inversión */}
-          <div className="text-center"> 
+          {/*<div className="text-center"> 
             <span className="block text-xs font-semibold uppercase tracking-wider text-ink-light">
               Inversión del módulo
             </span>
-            {/* El precio destaca en negritas */}
             <span className="font-bold text-ink">$2,000 MXN</span>
-          </div>
+          </div> */}
 
         </div>
         
@@ -260,7 +259,7 @@ return (
               <ArrowRight className="h-4 w-4 transition-transform group-active/btn:translate-x-1 md:group-hover/btn:translate-x-1" />
             </button>
               <span className="text-xs font-medium text-ink-light">
-                Inversión del programa: <strong className="text-ink">$10,000 MXN</strong>
+                {/* Inversión del programa: <strong className="text-ink">$10,000 MXN</strong> */}
               </span>
             </div>
 
@@ -417,7 +416,7 @@ return (
     {/* Columna Derecha: Precio y CTA */}
     <div className="mt-8 flex flex-col items-start gap-4 lg:mt-0 lg:w-1/3 lg:items-end">
       <div className="flex flex-col lg:items-end">
-        <span className="text-2xl font-bold text-white">$10,000</span>
+        {/* <span className="text-2xl font-bold text-white">$10,000</span> */}
         {/* Corrección: Volvemos a módulo para no mentir sobre la duración */}
         <span className="text-sm font-medium text-rice/60">MXN / por módulo</span>
       </div>
