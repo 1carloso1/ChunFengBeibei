@@ -27,7 +27,7 @@ La aplicación se encuentra desplegada y operando en su dominio oficial:
 
 ---
 
-## ✨ Características Principales (Features)
+## ✨ Características Principales
 
 * **Horarios Dinámicos en Tiempo Real:** El componente de horarios se sincroniza en vivo con un documento de Google Sheets. Si un grupo se llena, la UI se actualiza automáticamente mostrando estados como "Últimos lugares" o "Agotado".
 * **Sistema de Validación Oficial (Códigos QR):** Plataforma interna de verificación de constancias. Los alumnos y empleadores pueden escanear el código QR de un certificado de finalización de curso para corroborar su validez en la base de datos (Ruta: `/verificar/[folio]`).
@@ -39,7 +39,7 @@ La aplicación se encuentra desplegada y operando en su dominio oficial:
 
 ## 🛠️ Stack Tecnológico
 
-### Frontend (Cliente)
+### Frontend
 * **Next.js 15 (App Router):** Framework principal para Server-Side Rendering (SSR) y Static Site Generation (SSG) optimizado.
 * **React 19:** Biblioteca base de interfaces con soporte para los últimos hooks.
 * **Tailwind CSS v4:** Motor de utilidades CSS de nueva generación para el diseño responsivo.
@@ -51,7 +51,7 @@ La aplicación se encuentra desplegada y operando en su dominio oficial:
 
 ---
 
-## 🛠️ 🛠️ Guía de Instalación y Ejecución (Entorno Local)
+## 🛠️ Guía de Instalación y Ejecución (Entorno Local)
 
 Sigue estos pasos para levantar el entorno de desarrollo en tu máquina local.
 
